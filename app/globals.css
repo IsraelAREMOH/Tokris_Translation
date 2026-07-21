@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ *
+ * Brand "Lagoon" teal + "Sand" accent, both custom-derived scales.
+ */
+@theme {
+  /* Brand — lagoon teal */
+  --color-brand-50: #f1faf8;
+  --color-brand-100: #dbf2ed;
+  --color-brand-200: #b9e4dc;
+  --color-brand-300: #8acfc4;
+  --color-brand-400: #57b2a5;
+  --color-brand-500: #38988b;
+  --color-brand-600: #257a6f;
+  --color-brand-700: #1f625a;
+  --color-brand-800: #1c4f49;
+  --color-brand-900: #1a423d;
+  --color-brand-950: #0a2724;
+
+  /* Accent — warm sand */
+  --color-accent-100: #f9efdd;
+  --color-accent-200: #f1dcb6;
+  --color-accent-300: #e8c489;
+  --color-accent-400: #dfa95c;
+  --color-accent-500: #d0913e;
+  --color-accent-600: #b3742c;
+  --color-accent-700: #8f5a24;
+
+  /* Typography — Fraunces (display serif) paired with Inter (body sans) */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --font-display: var(--font-fraunces), "Iowan Old Style", Georgia,
+    "Times New Roman", serif;
+
+  /* Motion — transform/opacity only, spring-style easing */
+  --ease-spring: cubic-bezier(0.34, 1.3, 0.4, 1);
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Depth — layered, brand-tinted shadows (base -> elevated -> floating) */
+  --shadow-elevated: 0 1px 2px rgb(10 39 36 / 0.05),
+    0 3px 10px rgb(10 39 36 / 0.07);
+  --shadow-floating: 0 2px 6px rgb(10 39 36 / 0.08),
+    0 16px 40px rgb(10 39 36 / 0.16);
+  --shadow-brand: 0 1px 2px rgb(37 122 111 / 0.25),
+    0 8px 24px rgb(37 122 111 / 0.3);
+}
+
+/* Semantic surfaces — flipped by next-themes ("class" strategy on <html>) */
+:root {
+  color-scheme: light;
+  --background: #f7f6f2;
+  --surface: #fdfdfb;
+  --floating: #ffffff;
+  --foreground: #17211d;
+  --muted-foreground: #57675f;
+  --border: #e2e5df;
+  --danger: #b3362b;
+}
+
+.dark {
+  color-scheme: dark;
+  --background: #0b1110;
+  --surface: #101816;
+  --floating: #16211d;
+  --foreground: #edf3f0;
+  --muted-foreground: #94a69e;
+  --border: #24312b;
+  --danger: #e2685c;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-floating: var(--floating);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-danger: var(--danger);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    line-height: 1.7;
+  }
+}
+
+/* Grain texture — layer over gradients with a low opacity-* utility */
+@utility bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 144px 144px;
+}
+
+/*
+ * Motion — transform/opacity only, per the design guardrails.
+ * `rise` is the spring-style entrance for hero/section elements on load;
+ * stagger with an arbitrary [animation-delay:…] utility.
+ * `ambient-a/b` drift the hero's radial gradient blobs very slowly.
+ */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes ambient-a {
+  from {
+    opacity: 0.55;
+    transform: translate3d(-4%, -2%, 0) scale(1);
+  }
+  to {
+    opacity: 0.95;
+    transform: translate3d(5%, 4%, 0) scale(1.14);
+  }
+}
+
+@keyframes ambient-b {
+  from {
+    opacity: 0.5;
+    transform: translate3d(3%, 3%, 0) scale(1.06);
+  }
+  to {
+    opacity: 0.85;
+    transform: translate3d(-5%, -4%, 0) scale(0.94);
+  }
+}
+
+/*
+ * `progress-x` fills the services-showcase auto-advance rail (scaleX, so it
+ * stays on the transform/opacity-only budget). Apply with an arbitrary
+ * animation utility to control the cycle duration, gated behind motion-safe:
+ * the slideshow advances via the rail's animationend event, so disabling the
+ * animation also stops the auto-advance for reduced-motion users.
+ */
+@keyframes progress-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@utility animate-rise {
+  animation: rise 0.8s var(--ease-out-soft) both;
+}
+
+@utility animate-ambient-a {
+  animation: ambient-a 16s ease-in-out infinite alternate;
+}
+
+@utility animate-ambient-b {
+  animation: ambient-b 22s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .animate-ambient-a,
+  .animate-ambient-b {
+    animation: none;
+  }
+}

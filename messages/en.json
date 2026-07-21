@@ -1,0 +1,453 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "contact": "Contact",
+    "quote": "Request a Quote",
+    "login": "Log in",
+    "register": "Create account",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu"
+  },
+  "footer": {
+    "tagline": "Breaking Language Barriers. Creating Global Opportunities.",
+    "legal": "© {year} Tokris Global Services Limited. All rights reserved."
+  },
+  "themeToggle": {
+    "toLight": "Switch to light mode",
+    "toDark": "Switch to dark mode"
+  },
+  "whatsapp": {
+    "label": "Chat with us on WhatsApp"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or has been moved.",
+    "back": "Back to home"
+  },
+  "cta": {
+    "title": "Ready to Go Global?",
+    "body": "Let Language Never Be Your Barrier to Success. Partner with Tokris Global Services Limited for professional translation, sworn translation, certified translation, interpretation, localization, transcription, language training, and multilingual business support.",
+    "button": "Get Your Quote Today"
+  },
+  "home": {
+    "eyebrow": "Tokris Global Services Limited",
+    "title": "Professional Language Solutions That Connect You to the World",
+    "description": "Communicate with confidence. Expand globally. Succeed without language barriers.",
+    "primaryCta": "Get Your Quote Today",
+    "secondaryCta": "Explore Our Services",
+    "heroImageAlt": "A fountain pen resting on a handwritten manuscript",
+    "badgeTitle": "Certified & Sworn Translation",
+    "badgeBody": "Accepted by embassies, immigration authorities, universities, government agencies, courts, and international organizations",
+    "statLanguagesValue": "100+",
+    "statLanguages": "Languages Supported",
+    "statIndustriesValue": "10",
+    "statIndustries": "Industries Served",
+    "statTurnaroundValue": "Express",
+    "statTurnaround": "Same day services available",
+    "statQualityValue": "100%",
+    "statQuality": "Quality Assurance on Every Project",
+    "servicesSection": {
+      "eyebrow": "Our Services",
+      "title": "A complete portfolio of language services",
+      "subtitle": "Whether you require Certified Translation, Sworn Translation, Interpretation, Localization, Transcription, Language Training, or Multilingual Business Support, our experienced team delivers accurate, confidential, and culturally intelligent solutions tailored to your needs.",
+      "cta": "View all services",
+      "sv1Title": "Translation Services",
+      "sv1Body": "Professional translation for legal, immigration, academic, medical, financial, technical, and business documents.",
+      "sv1Alt": "A fountain pen signing an official document",
+      "sv2Title": "Certified Translation",
+      "sv2Body": "Accepted by embassies, immigration authorities, universities, government agencies, courts, and international organizations — with a professional statement of accuracy where applicable.",
+      "sv2Alt": "Official paperwork laid out on a desk",
+      "sv3Title": "Sworn Translation",
+      "sv3Body": "Completed or validated by officially authorized translators for immigration applications, visa processing, court proceedings, and government submissions.",
+      "sv3Alt": "A statue of Lady Justice holding scales",
+      "sv4Title": "Interpretation Services",
+      "sv4Body": "Simultaneous, consecutive, whispered, and remote interpretation for conferences, meetings, courts, healthcare, businesses, and international events.",
+      "sv4Alt": "An audience at an international conference",
+      "sv5Title": "Localization Services",
+      "sv5Body": "Website, software, mobile app, marketing, and e-commerce localization — expand globally with professionally localized content.",
+      "sv5Alt": "Source code on a computer screen",
+      "sv6Title": "Transcription Services",
+      "sv6Body": "Accurate transcription for interviews, podcasts, meetings, court proceedings, academic research, and medical recordings.",
+      "sv6Alt": "A studio microphone in close-up",
+      "sv7Title": "Language Training",
+      "sv7Body": "Professional language training for individuals, businesses, government agencies, NGOs, and corporate teams — available both online and onsite.",
+      "sv7Alt": "A lecture hall during a training session"
+    },
+    "features": {
+      "eyebrow": "Why Clients Choose Us",
+      "title": "The TGS Advantage",
+      "subtitle": "At Tokris Global Services Limited (TGS), we eliminate the linguistic friction that restricts international market entry. We facilitate cross-border communication through certified translation, sworn validation, international interpretation, and localized corporate training. From academic candidates positioning for international universities to multinational entities scaling into emerging markets, we provide culturally intelligent, high-precision solutions trusted worldwide.",
+      "f1Title": "Elite Talent & Scope",
+      "f1Body": "Backed by Certified & Professional Translators offering Sworn Translation Services across Over 100 Languages Supported.",
+      "f2Title": "Operational Integrity",
+      "f2Body": "Guaranteeing a Fast & Reliable Turnaround with Strict Confidentiality & Data Security and rigorous Quality Assurance on Every Project.",
+      "f3Title": "Global Access",
+      "f3Body": "Driven by Affordable & Transparent Pricing, seamless Global Service Delivery, and Dedicated Customer Support.",
+      "f4Title": "Fast & Reliable Turnaround",
+      "f4Body": "Express and same-day services are available. Receive your completed project securely and on time."
+    },
+    "process": {
+      "eyebrow": "Our Process",
+      "title": "How It Works",
+      "subtitle": "A clear, secure workflow that carries every project from first submission to final delivery.",
+      "s1Title": "Submit Your Documents",
+      "s1Body": "Upload your files via our website, email, or WhatsApp.",
+      "s2Title": "Receive a Quote",
+      "s2Body": "Our specialists review your project and provide a transparent quotation.",
+      "s3Title": "Translation & Quality Assurance",
+      "s3Body": "Your project is translated, edited, proofread, and verified by experienced linguists.",
+      "s4Title": "Secure Delivery",
+      "s4Body": "Receive your completed project securely and on time."
+    },
+    "languagesSection": {
+      "eyebrow": "Language Coverage",
+      "title": "Over 100 Languages Supported",
+      "subtitle": "English, French, Spanish, Portuguese, Polish, German, Italian, Arabic, Chinese, Czech, Russian, Ukrainian, Slovak, Bulgarian, Dutch, Turkish, Japanese, Korean, Swahili, Romanian, Hausa, Yoruba, Igbo, Pidgin, and many more upon request.",
+      "cta": "Browse the full catalogue"
+    },
+    "industriesSection": {
+      "eyebrow": "Industries We Serve",
+      "title": "Specialist coverage across every sector",
+      "subtitle": "From courtrooms and hospitals to ministries and multinationals — high-precision language support wherever you operate.",
+      "more": "Also serving Financial Services, Energy, Non-Governmental Organizations (NGOs), and International Development Agencies.",
+      "i1Name": "Legal",
+      "i1Body": "Contracts, court proceedings, and civil registration documents.",
+      "i1Alt": "Scales of justice on a desk in a law office",
+      "i2Name": "Healthcare",
+      "i2Body": "Medical reports, patient records, and consultations.",
+      "i2Alt": "A doctor reviewing medical records on a tablet",
+      "i3Name": "Education",
+      "i3Body": "Academic transcripts, diplomas, and university admissions.",
+      "i3Alt": "A historic university building on a sunny campus",
+      "i4Name": "Government",
+      "i4Body": "Official submissions, diplomatic meetings, and government events.",
+      "i4Alt": "Rows of international flags outside an institution",
+      "i5Name": "Corporate",
+      "i5Body": "Business documents, corporate communications, and marketing materials.",
+      "i5Alt": "Looking up at modern glass office towers",
+      "i6Name": "Technology",
+      "i6Body": "Software, mobile apps, and technical manuals.",
+      "i6Alt": "Close-up of a computer circuit board"
+    }
+  },
+  "services": {
+    "eyebrow": "Our Services",
+    "title": "Professional language services, end to end",
+    "description": "Whether you require Certified Translation, Sworn Translation, Interpretation, Localization, Transcription, Language Training, or Multilingual Business Support, our experienced team delivers accurate, confidential, and culturally intelligent solutions tailored to your needs.",
+    "translationTitle": "Translation Services",
+    "translationBody": "Professional translation across every document type — accurate, confidential, and delivered to the standard your receiving institution expects.",
+    "doc1": "Legal Documents",
+    "doc2": "Immigration Documents",
+    "doc3": "Birth Certificates",
+    "doc4": "Marriage Certificates",
+    "doc5": "Academic Transcripts",
+    "doc6": "Diplomas & Certificates",
+    "doc7": "Medical Reports",
+    "doc8": "Financial Statements",
+    "doc9": "Technical Manuals",
+    "doc10": "Business Documents",
+    "doc11": "Corporate Communications",
+    "doc12": "Marketing Materials",
+    "doc13": "Research Papers",
+    "doc14": "Commercial Contracts",
+    "certifiedTitle": "Certified Translation",
+    "certifiedBody": "Accepted by embassies, immigration authorities, universities, government agencies, courts, and international organizations. Every certified translation includes a professional statement of accuracy where applicable.",
+    "swornTitle": "Sworn Translation",
+    "swornBody": "Completed or validated by officially authorized translators — for immigration applications, visa processing, court proceedings, embassy requirements, university admissions, and civil registration documents.",
+    "interpretationTitle": "Interpretation Services",
+    "interpretationBody": "Professional interpretation for conferences, meetings, courts, healthcare, businesses, and international events.",
+    "localizationTitle": "Localization Services",
+    "localizationBody": "Expand globally with professionally localized content — websites, software, mobile apps, marketing, e-commerce, product documentation, and multimedia.",
+    "transcriptionTitle": "Transcription Services",
+    "transcriptionBody": "Accurate transcription for interviews, podcasts, meetings, court proceedings, academic research, and medical and business recordings.",
+    "trainingTitle": "Language Training",
+    "trainingBody": "Professional language training for individuals, businesses, government agencies, NGOs, and corporate teams — available both online and onsite.",
+    "formats": {
+      "eyebrow": "Interpretation",
+      "title": "Interpretation in every format",
+      "subtitle": "From soundproof booths at international summits to whispered interpretation for VIP delegations — matched to the setting, the stakes, and the audience.",
+      "fm1Title": "Simultaneous Interpretation",
+      "fm1Body": "Ideal for international conferences, diplomatic meetings, government events, corporate summits, workshops, seminars, and hybrid or virtual events.",
+      "fm2Title": "Consecutive Interpretation",
+      "fm2Body": "Suitable for business meetings, court proceedings, medical consultations, interviews, immigration interviews, negotiations, and training sessions.",
+      "fm3Title": "Whispered Interpretation (Chuchotage)",
+      "fm3Body": "Ideal for executive meetings, VIP delegations, site visits, and factory tours.",
+      "fm4Title": "Remote Interpretation",
+      "fm4Body": "High-fidelity interpretation available via Zoom, Microsoft Teams, Google Meet, and telephone.",
+      "fm5Title": "Conference Interpretation Equipment",
+      "fm5Body": "Interpretation booths, interpreter consoles, wireless receivers, headsets, conference audio systems, and technical support — a complete solution for multilingual conferences and international events."
+    }
+  },
+  "languages": {
+    "title": "Languages we support",
+    "description": "Our most-requested languages, each pairing with every other — with over 100 languages supported in total and more available upon request.",
+    "eyebrow": "Master catalogue",
+    "searchLabel": "Search languages",
+    "searchPlaceholder": "Search by name…",
+    "filterLabel": "Filter by region",
+    "filterAll": "All regions",
+    "regionGlobal": "Global",
+    "regionEurope": "Europe",
+    "regionAfrica": "Africa",
+    "regionAsia": "Asia",
+    "regionMena": "Middle East & North Africa",
+    "count": "{count, plural, one {# language} other {# languages}}",
+    "noResults": "No languages match your search; try a different spelling, or ask us directly on WhatsApp.",
+    "pairsNote": "Every language pairs with every other. If your combination isn't listed, message us — capacity grows with demand.",
+    "catalog": {
+      "english": {
+        "name": "English",
+        "blurb": "The world's bridge language — business, academic and official documents in UK and US conventions."
+      },
+      "french": {
+        "name": "French",
+        "blurb": "Official and business French for France, Belgium, Switzerland and Francophone Africa."
+      },
+      "spanish": {
+        "name": "Spanish",
+        "blurb": "European and Latin American Spanish for contracts, certificates and marketing."
+      },
+      "german": {
+        "name": "German",
+        "blurb": "Precise German for legal, technical and corporate documentation across the DACH region."
+      },
+      "italian": {
+        "name": "Italian",
+        "blurb": "Italian for legal, manufacturing, fashion and cultural content."
+      },
+      "portuguese": {
+        "name": "Portuguese",
+        "blurb": "European and Brazilian Portuguese, adapted to the right variant for your audience."
+      },
+      "dutch": {
+        "name": "Dutch",
+        "blurb": "Dutch for the Netherlands and Flanders,  official documents, business and commerce."
+      },
+      "arabic": {
+        "name": "Arabic",
+        "blurb": "Modern Standard Arabic for official, legal and commercial documents across MENA."
+      },
+      "chinese": {
+        "name": "Chinese (Simplified)",
+        "blurb": "Simplified Chinese for mainland business, manufacturing and immigration paperwork."
+      },
+      "japanese": {
+        "name": "Japanese",
+        "blurb": "Japanese for corporate, technical and cultural material with native-level register."
+      },
+      "korean": {
+        "name": "Korean",
+        "blurb": "Korean for business, entertainment and official documentation."
+      },
+      "russian": {
+        "name": "Russian",
+        "blurb": "Russian for certificates, contracts and technical content across the CIS."
+      },
+      "turkish": {
+        "name": "Turkish",
+        "blurb": "Turkish for official, commercial and immigration documents."
+      },
+      "polish": {
+        "name": "Polish",
+        "blurb": "Polish for EU paperwork, certificates and business content."
+      },
+      "yoruba": {
+        "name": "Yoruba",
+        "blurb": "Yorùbá for civic, cultural, health and community materials across south-west Nigeria."
+      },
+      "igbo": {
+        "name": "Igbo",
+        "blurb": "Igbo translation rooted in south-east Nigeria's culture and commerce."
+      },
+      "hausa": {
+        "name": "Hausa",
+        "blurb": "Hausa for one of West Africa's largest language communities — public health, media and trade."
+      },
+      "swahili": {
+        "name": "Swahili",
+        "blurb": "Swahili for East Africa, NGOs, government and business across Kenya and Tanzania."
+      }
+    }
+  },
+  "quote": {
+    "title": "Request a quote",
+    "description": "Upload your documents, choose your language pair and deadline, and receive a personal quote — usually within a few hours.",
+    "authPrompt": "You need an account to request a quote; it takes less than a minute and lets you track everything in your portal.",
+    "loginCta": "Log in",
+    "registerCta": "Create account",
+    "form": {
+      "sourceLanguage": "Translate from",
+      "targetLanguage": "Translate to",
+      "selectPlaceholder": "Select a language…",
+      "deadline": "Requested deadline",
+      "instructions": "Instructions (optional)",
+      "instructionsPlaceholder": "Anything we should know — certification needs, formatting, audience…",
+      "submit": "Submit request",
+      "pending": "Submitting…",
+      "success": "Request received! We'll review your documents and reply with a personal quote shortly.",
+      "successCta": "Track it in your portal"
+    },
+    "upload": {
+      "label": "Source documents",
+      "dropHint": "Drag & drop files here, or click to browse",
+      "constraints": "Up to {maxFiles} files, {maxSize} MB each — PDF, Word, text or images",
+      "remove": "Remove {name}",
+      "skipped": "Some files were skipped (unsupported type, too large, or over the file limit): {names}"
+    },
+    "errors": {
+      "notAuthenticated": "Please log in to submit a quote request.",
+      "missingFields": "Please choose both languages and a deadline.",
+      "sameLanguage": "Source and target languages must be different.",
+      "invalidDeadline": "The deadline must be a date in the future.",
+      "instructionsTooLong": "Instructions are limited to {max} characters.",
+      "noFiles": "Please attach at least one document.",
+      "tooManyFiles": "You can upload at most {max} files.",
+      "fileTooLarge": "\"{name}\" exceeds the {max} MB limit.",
+      "unsupportedType": "\"{name}\" has an unsupported file type.",
+      "uploadFailed": "We couldn't upload your documents. Please try again.",
+      "generic": "Something went wrong. Please try again."
+    }
+  },
+  "about": {
+    "title": "Your Trusted Partner for Global Language Solutions",
+    "description": "At Tokris Global Services Limited, we believe language should never be a barrier to opportunity.",
+    "eyebrow": "About Us",
+    "storyTitle": "Who we are",
+    "storyP1": "We help people and organizations communicate across cultures through professional translation, sworn translation, interpretation, localization, transcription, language training, and multilingual communication services.",
+    "storyP2": "From students applying to international universities to multinational corporations expanding into new markets, we provide language solutions that are accurate, culturally appropriate, and trusted worldwide. Every project is handled with professionalism, confidentiality, and an unwavering commitment to quality.",
+    "imageAlt1": "A team collaborating around a table with notebooks and laptops",
+    "imageAlt2": "Rows of books in a quiet library hall",
+    "visionTitle": "Our Vision",
+    "visionBody": "To become Africa's most trusted, premier, and globally recognized multi-sector enterprise anchored in world-class language solutions that empower people and organizations to communicate, operate, and scale across international borders without limits through continuous innovation, excellence, and deep cultural intelligence.",
+    "missionTitle": "Our Mission",
+    "missionBody": "To eliminate cross-border friction by delivering flawless linguistic solutions, robust operational design, and agile resource procurement that accelerate global enterprise growth.",
+    "tokris": {
+      "eyebrow": "Why Our Clients Trust Us",
+      "title": "The TOKRIS framework",
+      "subtitle": "Our name is our operating model — five integrated pillars that carry your enterprise from first translation to full international integration.",
+      "p1Title": "Translation & Technology",
+      "p1Body": "Our baseline engine. We bridge critical communication gaps through elite linguistic precision while deployment-ready tech ensures your data assets are structurally optimized for international scale.",
+      "p2Title": "Operational Optimization",
+      "p2Body": "The operational pathway. We transform raw language assets into structured corporate workflows, providing lean project management and administrative advisory to streamline market entry.",
+      "p3Title": "Knowledge Systems",
+      "p3Body": "The intellectual core. We reinforce your operations with advanced language training, global compliance mapping, and localization insights to keep your brand culturally intelligent.",
+      "p4Title": "Resource Procurement",
+      "p4Body": "The physical pipeline. We expand your infrastructure from words to tangible trade, facilitating global supply chain networks, secure international logistics, and cross-border execution.",
+      "p5Title": "International Integration",
+      "p5Body": "The ultimate destination. We synthesize translation, operational intelligence, knowledge systems, and physical resources to ensure your enterprise transitions seamlessly into any foreign market."
+    },
+    "valuesTitle": "Our Core Values",
+    "valuesSubtitle": "Seven commitments, kept on every project regardless of size.",
+    "v1Title": "Excellence",
+    "v1Body": "Delivering outstanding quality in every project.",
+    "v2Title": "Integrity",
+    "v2Body": "Acting with honesty, transparency, and professionalism.",
+    "v3Title": "Accuracy",
+    "v3Body": "Ensuring precision in every translation and interpretation.",
+    "v4Title": "Confidentiality",
+    "v4Body": "Safeguarding client information with the highest level of security.",
+    "v5Title": "Customer Focus",
+    "v5Body": "Putting our clients' success at the heart of everything we do.",
+    "v6Title": "Innovation",
+    "v6Body": "Leveraging technology and continuous improvement.",
+    "v7Title": "Cultural Intelligence",
+    "v7Body": "Respecting languages and cultures to ensure meaningful communication.",
+    "stat1Value": "100+",
+    "stat1Label": "Languages Supported",
+    "stat2Value": "10",
+    "stat2Label": "Industries Served",
+    "stat3Value": "7",
+    "stat3Label": "Core Service Lines",
+    "stat4Value": "100%",
+    "stat4Label": "Quality Assurance"
+  },
+  "testimonials": {
+    "eyebrow": "Client Reviews",
+    "title": "Why our clients trust us",
+    "q1": "Tokris Global Services Limited delivered exceptional translation and interpretation services for our international conference. Their professionalism and attention to detail were outstanding.",
+    "q1Role": "Corporate Client",
+    "q2": "Our certified documents were accepted by the embassy without any issues. Fast, professional, and reliable.",
+    "q2Role": "Immigration & Legal Client",
+    "q3": "Excellent customer service and outstanding quality. We highly recommend Tokris Global Services Limited.",
+    "q3Role": "Business Client"
+  },
+  "contact": {
+    "eyebrow": "Get in touch",
+    "title": "Contact us",
+    "description": "Questions before requesting a quote? Reach us by phone, email, or WhatsApp — and get a personal reply.",
+    "phoneTitle": "Call us",
+    "phoneBody": "Speak directly with our project team.",
+    "emailTitle": "Email us",
+    "emailBody": "Send your documents or questions and receive a personal reply.",
+    "whatsappTitle": "WhatsApp",
+    "whatsappBody": "Message us for quick questions and quote requests.",
+    "whatsappCta": "Start a chat",
+    "form": {
+      "title": "Send us a message",
+      "subtitle": "Tell us about your project and we'll reply with a personal response.",
+      "name": "Full name",
+      "email": "Email address",
+      "phone": "Phone number (optional)",
+      "message": "Your message",
+      "messagePlaceholder": "Tell us about your project, languages, and deadline…",
+      "honeypot": "Leave this field empty",
+      "submit": "Send message",
+      "pending": "Sending…",
+      "success": "Message sent! We'll get back to you shortly.",
+      "errors": {
+        "missingFields": "Please fill in your name, email, and message.",
+        "invalidEmail": "Please enter a valid email address.",
+        "messageTooLong": "Your message is too long — please keep it under {max} characters.",
+        "sendFailed": "We couldn't send your message right now. Please email us directly or reach us on WhatsApp."
+      }
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Frequently Asked Questions",
+      "q1": "How much do your services cost?",
+      "a1": "Pricing depends on the language pair, document type, complexity, and turnaround time. Contact us for a quotation.",
+      "q2": "How long does translation take?",
+      "a2": "Delivery times vary depending on the project. Express and same-day services are available.",
+      "q3": "Are my documents confidential?",
+      "a3": "Yes. Every project is handled with strict confidentiality and secure data management.",
+      "q4": "Do you provide Certified and Sworn Translation?",
+      "a4": "Yes. We offer both Certified and Sworn Translation services where required by the receiving institution or country.",
+      "q5": "Can you manage large multilingual projects?",
+      "a5": "Absolutely. We support projects of every size, from individual documents to enterprise-level multilingual assignments."
+    }
+  },
+  "auth": {
+    "fields": {
+      "fullName": "Full name",
+      "phone": "Phone number (optional)",
+      "email": "Email address",
+      "password": "Password"
+    },
+    "login": {
+      "title": "Welcome back",
+      "description": "Log in to track your translation projects, messages and deliveries.",
+      "switchCta": "New here? Create an account",
+      "submit": "Log in",
+      "pending": "Logging in…",
+      "confirmError": "We couldn't verify your confirmation link. Try logging in — or register again to receive a new one."
+    },
+    "register": {
+      "title": "Create your account",
+      "description": "Register to submit requests, follow progress and download completed translations.",
+      "switchCta": "Already registered? Log in",
+      "submit": "Create account",
+      "pending": "Creating account…",
+      "checkEmail": "Almost there — check your inbox and click the confirmation link to activate your account."
+    },
+    "errors": {
+      "missingFields": "Please fill in all required fields.",
+      "passwordTooShort": "Password must be at least 8 characters.",
+      "invalidCredentials": "Invalid email or password.",
+      "emailNotConfirmed": "Please confirm your email address before logging in.",
+      "emailInUse": "An account with this email already exists.",
+      "generic": "Something went wrong. Please try again."
+    }
+  }
+}
