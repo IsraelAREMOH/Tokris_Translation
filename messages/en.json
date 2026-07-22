@@ -57,7 +57,7 @@
       "sv1Body": "Professional translation for legal, immigration, academic, medical, financial, technical, and business documents.",
       "sv1Alt": "A fountain pen signing an official document",
       "sv2Title": "Certified Translation",
-      "sv2Body": "Accepted by embassies, immigration authorities, universities, government agencies, courts, and international organizations — with a professional statement of accuracy where applicable.",
+      "sv2Body": "Accepted by embassies, immigration authorities, universities, government agencies, courts, and international organizations with a professional statement of accuracy where applicable.",
       "sv2Alt": "Official paperwork laid out on a desk",
       "sv3Title": "Sworn Translation",
       "sv3Body": "Completed or validated by officially authorized translators for immigration applications, visa processing, court proceedings, and government submissions.",
@@ -66,13 +66,13 @@
       "sv4Body": "Simultaneous, consecutive, whispered, and remote interpretation for conferences, meetings, courts, healthcare, businesses, and international events.",
       "sv4Alt": "An audience at an international conference",
       "sv5Title": "Localization Services",
-      "sv5Body": "Website, software, mobile app, marketing, and e-commerce localization — expand globally with professionally localized content.",
+      "sv5Body": "Website, software, mobile app, marketing, and e-commerce localization, expand globally with professionally localized content.",
       "sv5Alt": "Source code on a computer screen",
       "sv6Title": "Transcription Services",
       "sv6Body": "Accurate transcription for interviews, podcasts, meetings, court proceedings, academic research, and medical recordings.",
       "sv6Alt": "A studio microphone in close-up",
-      "sv7Title": "Language Training",
-      "sv7Body": "Professional language training for individuals, businesses, government agencies, NGOs, and corporate teams — available both online and onsite.",
+      "sv7Title": "Document Notarization Assistance",
+      "sv7Body": "Professional assistance with document notarization for official and legal use.",
       "sv7Alt": "A lecture hall during a training session"
     },
     "features": {
@@ -110,7 +110,7 @@
     "industriesSection": {
       "eyebrow": "Industries We Serve",
       "title": "Specialist coverage across every sector",
-      "subtitle": "From courtrooms and hospitals to ministries and multinationals — high-precision language support wherever you operate.",
+      "subtitle": "From courtrooms and hospitals to ministries and multinationals, high precision language support wherever you operate.",
       "more": "Also serving Financial Services, Energy, Non-Governmental Organizations (NGOs), and International Development Agencies.",
       "i1Name": "Legal",
       "i1Body": "Contracts, court proceedings, and civil registration documents.",
@@ -137,7 +137,7 @@
     "title": "Professional language services, end to end",
     "description": "Whether you require Certified Translation, Sworn Translation, Interpretation, Localization, Transcription, Language Training, or Multilingual Business Support, our experienced team delivers accurate, confidential, and culturally intelligent solutions tailored to your needs.",
     "translationTitle": "Translation Services",
-    "translationBody": "Professional translation across every document type — accurate, confidential, and delivered to the standard your receiving institution expects.",
+    "translationBody": "Professional translation across every document type, accurate, confidential, and delivered to the standard your receiving institution expects.",
     "doc1": "Legal Documents",
     "doc2": "Immigration Documents",
     "doc3": "Birth Certificates",
@@ -152,22 +152,24 @@
     "doc12": "Marketing Materials",
     "doc13": "Research Papers",
     "doc14": "Commercial Contracts",
+    "doc15": "Document Notarization Assistance",
+    "doc16": "Apostille & Legalization Support",
     "certifiedTitle": "Certified Translation",
     "certifiedBody": "Accepted by embassies, immigration authorities, universities, government agencies, courts, and international organizations. Every certified translation includes a professional statement of accuracy where applicable.",
     "swornTitle": "Sworn Translation",
-    "swornBody": "Completed or validated by officially authorized translators — for immigration applications, visa processing, court proceedings, embassy requirements, university admissions, and civil registration documents.",
+    "swornBody": "Completed or validated by officially authorized translators for immigration applications, visa processing, court proceedings, embassy requirements, university admissions, and civil registration documents.",
     "interpretationTitle": "Interpretation Services",
     "interpretationBody": "Professional interpretation for conferences, meetings, courts, healthcare, businesses, and international events.",
     "localizationTitle": "Localization Services",
-    "localizationBody": "Expand globally with professionally localized content — websites, software, mobile apps, marketing, e-commerce, product documentation, and multimedia.",
+    "localizationBody": "Expand globally with professionally localized content websites, software, mobile apps, marketing, e-commerce, product documentation, and multimedia.",
     "transcriptionTitle": "Transcription Services",
     "transcriptionBody": "Accurate transcription for interviews, podcasts, meetings, court proceedings, academic research, and medical and business recordings.",
     "trainingTitle": "Language Training",
-    "trainingBody": "Professional language training for individuals, businesses, government agencies, NGOs, and corporate teams — available both online and onsite.",
+    "trainingBody": "Professional language training for individuals, businesses, government agencies, NGOs, and corporate teams available both online and onsite.",
     "formats": {
       "eyebrow": "Interpretation",
       "title": "Interpretation in every format",
-      "subtitle": "From soundproof booths at international summits to whispered interpretation for VIP delegations — matched to the setting, the stakes, and the audience.",
+      "subtitle": "From soundproof booths at international summits to whispered interpretation for VIP delegations, matched to the setting, the stakes, and the audience.",
       "fm1Title": "Simultaneous Interpretation",
       "fm1Body": "Ideal for international conferences, diplomatic meetings, government events, corporate summits, workshops, seminars, and hybrid or virtual events.",
       "fm2Title": "Consecutive Interpretation",
@@ -175,14 +177,14 @@
       "fm3Title": "Whispered Interpretation (Chuchotage)",
       "fm3Body": "Ideal for executive meetings, VIP delegations, site visits, and factory tours.",
       "fm4Title": "Remote Interpretation",
-      "fm4Body": "High-fidelity interpretation available via Zoom, Microsoft Teams, Google Meet, and telephone.",
+      "fm4Body": "High fidelity interpretation available via Zoom, Microsoft Teams, Google Meet, and telephone.",
       "fm5Title": "Conference Interpretation Equipment",
-      "fm5Body": "Interpretation booths, interpreter consoles, wireless receivers, headsets, conference audio systems, and technical support — a complete solution for multilingual conferences and international events."
+      "fm5Body": "Interpretation booths, interpreter consoles, wireless receivers, headsets, conference audio systems, and technical support a complete solution for multilingual conferences and international events."
     }
   },
   "languages": {
     "title": "Languages we support",
-    "description": "Our most-requested languages, each pairing with every other — with over 100 languages supported in total and more available upon request.",
+    "description": "Our most requested languages, each pairing with every other, with over 100 languages supported in total and more available upon request.",
     "eyebrow": "Master catalogue",
     "searchLabel": "Search languages",
     "searchPlaceholder": "Search by name…",
@@ -195,11 +197,11 @@
     "regionMena": "Middle East & North Africa",
     "count": "{count, plural, one {# language} other {# languages}}",
     "noResults": "No languages match your search; try a different spelling, or ask us directly on WhatsApp.",
-    "pairsNote": "Every language pairs with every other. If your combination isn't listed, message us — capacity grows with demand.",
+    "pairsNote": "Every language pairs with every other. If your combination isn't listed, message us, capacity grows with demand.",
     "catalog": {
       "english": {
         "name": "English",
-        "blurb": "The world's bridge language — business, academic and official documents in UK and US conventions."
+        "blurb": "The world's bridge language - business, academic and official documents in UK and US conventions."
       },
       "french": {
         "name": "French",
@@ -263,7 +265,7 @@
       },
       "hausa": {
         "name": "Hausa",
-        "blurb": "Hausa for one of West Africa's largest language communities — public health, media and trade."
+        "blurb": "Hausa for one of West Africa's largest language communities, public health, media and trade."
       },
       "swahili": {
         "name": "Swahili",
@@ -273,7 +275,7 @@
   },
   "quote": {
     "title": "Request a quote",
-    "description": "Upload your documents, choose your language pair and deadline, and receive a personal quote — usually within a few hours.",
+    "description": "Upload your documents, choose your language pair and deadline, and receive a personal quote, usually within a few hours.",
     "authPrompt": "You need an account to request a quote; it takes less than a minute and lets you track everything in your portal.",
     "loginCta": "Log in",
     "registerCta": "Create account",
@@ -283,7 +285,7 @@
       "selectPlaceholder": "Select a language…",
       "deadline": "Requested deadline",
       "instructions": "Instructions (optional)",
-      "instructionsPlaceholder": "Anything we should know — certification needs, formatting, audience…",
+      "instructionsPlaceholder": "Anything we should know; certification needs, formatting, audience…",
       "submit": "Submit request",
       "pending": "Submitting…",
       "success": "Request received! We'll review your documents and reply with a personal quote shortly.",
@@ -292,7 +294,7 @@
     "upload": {
       "label": "Source documents",
       "dropHint": "Drag & drop files here, or click to browse",
-      "constraints": "Up to {maxFiles} files, {maxSize} MB each — PDF, Word, text or images",
+      "constraints": "Up to {maxFiles} files, {maxSize} MB each PDF, Word, text or images",
       "remove": "Remove {name}",
       "skipped": "Some files were skipped (unsupported type, too large, or over the file limit): {names}"
     },
@@ -320,15 +322,15 @@
     "imageAlt1": "A team collaborating around a table with notebooks and laptops",
     "imageAlt2": "Rows of books in a quiet library hall",
     "visionTitle": "Our Vision",
-    "visionBody": "To become Africa's most trusted, premier, and globally recognized multi-sector enterprise anchored in world-class language solutions that empower people and organizations to communicate, operate, and scale across international borders without limits through continuous innovation, excellence, and deep cultural intelligence.",
+    "visionBody": "To become Africa's most trusted, premier, and globally recognized multi sector enterprise anchored in world class language solutions that empower people and organizations to communicate, operate, and scale across international borders without limits through continuous innovation, excellence, and deep cultural intelligence.",
     "missionTitle": "Our Mission",
-    "missionBody": "To eliminate cross-border friction by delivering flawless linguistic solutions, robust operational design, and agile resource procurement that accelerate global enterprise growth.",
+    "missionBody": "To eliminate cross border friction by delivering flawless linguistic solutions, robust operational design, and agile resource procurement that accelerate global enterprise growth.",
     "tokris": {
       "eyebrow": "Why Our Clients Trust Us",
       "title": "The TOKRIS framework",
-      "subtitle": "Our name is our operating model — five integrated pillars that carry your enterprise from first translation to full international integration.",
+      "subtitle": "Our name is our operating model, five integrated pillars that carry your enterprise from first translation to full international integration.",
       "p1Title": "Translation & Technology",
-      "p1Body": "Our baseline engine. We bridge critical communication gaps through elite linguistic precision while deployment-ready tech ensures your data assets are structurally optimized for international scale.",
+      "p1Body": "Our baseline engine. We bridge critical communication gaps through elite linguistic precision while deployment ready tech ensures your data assets are structurally optimized for international scale.",
       "p2Title": "Operational Optimization",
       "p2Body": "The operational pathway. We transform raw language assets into structured corporate workflows, providing lean project management and administrative advisory to streamline market entry.",
       "p3Title": "Knowledge Systems",
@@ -376,11 +378,11 @@
   "contact": {
     "eyebrow": "Get in touch",
     "title": "Contact us",
-    "description": "Questions before requesting a quote? Reach us by phone, email, or WhatsApp — and get a personal reply.",
+    "description": "Questions before requesting a quote? Reach us by phone, email, or WhatsApp, and get a personal reply.",
+    "heroCta": "Message our team",
+    "addressTitle": "Visit us",
     "phoneTitle": "Call us",
-    "phoneBody": "Speak directly with our project team.",
     "emailTitle": "Email us",
-    "emailBody": "Send your documents or questions and receive a personal reply.",
     "whatsappTitle": "WhatsApp",
     "whatsappBody": "Message us for quick questions and quote requests.",
     "whatsappCta": "Start a chat",
@@ -399,7 +401,7 @@
       "errors": {
         "missingFields": "Please fill in your name, email, and message.",
         "invalidEmail": "Please enter a valid email address.",
-        "messageTooLong": "Your message is too long — please keep it under {max} characters.",
+        "messageTooLong": "Your message is too long, please keep it under {max} characters.",
         "sendFailed": "We couldn't send your message right now. Please email us directly or reach us on WhatsApp."
       }
     },
@@ -409,7 +411,7 @@
       "q1": "How much do your services cost?",
       "a1": "Pricing depends on the language pair, document type, complexity, and turnaround time. Contact us for a quotation.",
       "q2": "How long does translation take?",
-      "a2": "Delivery times vary depending on the project. Express and same-day services are available.",
+      "a2": "Delivery times vary depending on the project. Express and same day services are available.",
       "q3": "Are my documents confidential?",
       "a3": "Yes. Every project is handled with strict confidentiality and secure data management.",
       "q4": "Do you provide Certified and Sworn Translation?",
@@ -431,7 +433,7 @@
       "switchCta": "New here? Create an account",
       "submit": "Log in",
       "pending": "Logging in…",
-      "confirmError": "We couldn't verify your confirmation link. Try logging in — or register again to receive a new one."
+      "confirmError": "We couldn't verify your confirmation link. Try logging in or register again to receive a new one."
     },
     "register": {
       "title": "Create your account",
@@ -439,7 +441,7 @@
       "switchCta": "Already registered? Log in",
       "submit": "Create account",
       "pending": "Creating account…",
-      "checkEmail": "Almost there — check your inbox and click the confirmation link to activate your account."
+      "checkEmail": "Almost there, check your inbox and click the confirmation link to activate your account."
     },
     "errors": {
       "missingFields": "Please fill in all required fields.",

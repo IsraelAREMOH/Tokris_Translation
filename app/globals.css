@@ -153,6 +153,19 @@
   }
 }
 
+/*
+ * `marquee-x` drives the contact hero's photo strip: the track renders its
+ * image list twice back to back, so translating exactly -50% loops seamlessly.
+ */
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @utility animate-rise {
   animation: rise 0.8s var(--ease-out-soft) both;
 }
@@ -165,6 +178,10 @@
   animation: ambient-b 22s ease-in-out infinite alternate;
 }
 
+@utility animate-marquee {
+  animation: marquee-x 42s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-rise {
     animation: none;
@@ -172,7 +189,8 @@
     transform: none;
   }
   .animate-ambient-a,
-  .animate-ambient-b {
+  .animate-ambient-b,
+  .animate-marquee {
     animation: none;
   }
 }

@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local-only dev workarounds (machine/network-specific, never shared)
+dev-insecure.ps1
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

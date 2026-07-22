@@ -1,14 +1,14 @@
-import { Mail, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
 import { Link } from "@/i18n/navigation";
-import { getContactDetails, telHref } from "@/lib/contact/details";
+import { getContactDetails, mapsHref, telHref } from "@/lib/contact/details";
 
 export async function SiteFooter() {
   const t = await getTranslations("footer");
   const nav = await getTranslations("nav");
   const year = new Date().getFullYear();
-  const { phones, email } = await getContactDetails();
+  const { phones, email, address } = await getContactDetails();
 
   const links = [
     { href: "/services", label: nav("services") },
@@ -42,7 +42,19 @@ export async function SiteFooter() {
           ))}
         </nav>
 
-        <address className="flex flex-col items-start gap-2.5 not-italic">
+        <address className="flex max-w-56 flex-col items-start gap-2.5 not-italic">
+          <a
+            href={mapsHref(address)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-start gap-2.5 rounded-sm text-sm text-muted-foreground transition-transform duration-200 ease-spring hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 active:scale-[0.98]"
+          >
+            <MapPin
+              aria-hidden
+              className="mt-0.5 h-3.5 w-3.5 shrink-0 text-brand-600 dark:text-brand-400"
+            />
+            {address}
+          </a>
           {phones.map((phone) => (
             <a
               key={phone}

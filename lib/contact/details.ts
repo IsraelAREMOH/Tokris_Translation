@@ -7,11 +7,14 @@ export const DEFAULT_CONTACT_PHONES = [
   "+234 912 614 5745",
 ];
 export const DEFAULT_CONTACT_EMAIL = "tokrisglobalservices@gmail.com";
+export const DEFAULT_OFFICE_ADDRESS =
+  "Muri Busari Close, Adeniyi Jones, Ikeja, Lagos State, Nigeria";
 
 export type ContactDetails = {
   phones: string[];
   email: string;
   whatsappNumber: string;
+  address: string;
 };
 
 /**
@@ -29,9 +32,14 @@ export async function getContactDetails(): Promise<ContactDetails> {
     email: content.contact_email || DEFAULT_CONTACT_EMAIL,
     whatsappNumber:
       content.whatsapp_number || process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "",
+    address: content.office_address || DEFAULT_OFFICE_ADDRESS,
   };
 }
 
 export function telHref(phone: string) {
   return `tel:${phone.replace(/\s+/g, "")}`;
+}
+
+export function mapsHref(address: string) {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 }
