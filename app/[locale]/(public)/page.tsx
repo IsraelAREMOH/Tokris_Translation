@@ -12,11 +12,13 @@ import {
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 
+import { LatestInsights } from "@/components/blog/latest-insights";
 import { ClientReviews } from "@/components/public/client-reviews";
 import { CtaBand } from "@/components/public/cta-band";
 import { IndustryGallery } from "@/components/public/industry-gallery";
 import { LanguageTerminal } from "@/components/public/language-terminal";
 import { ServicesShowcase } from "@/components/public/services-showcase";
+import { Reveal } from "@/components/ui/reveal";
 import { Link } from "@/i18n/navigation";
 
 const HERO_IMAGE =
@@ -112,10 +114,14 @@ export default async function HomePage({
             </div>
 
             <div className="animate-rise mt-12 grid w-full max-w-xl grid-cols-2 gap-x-6 gap-y-8 [animation-delay:400ms] sm:grid-cols-4">
-              {stats.map((stat) => (
+              {stats.map((stat, index) => (
                 <div
                   key={stat.label}
-                  className="border-l-2 border-brand-600/25 pl-4 dark:border-brand-400/25"
+                  className={
+                    index % 2 === 0
+                      ? "border-l-2 border-brand-600/25 pl-4 dark:border-brand-400/25"
+                      : "border-l-2 border-seal-500/35 pl-4 dark:border-seal-400/35"
+                  }
                 >
                   <p className="font-display text-3xl font-semibold tracking-[-0.02em] text-foreground">
                     {stat.value}
@@ -162,7 +168,7 @@ export default async function HomePage({
 
       {/* ---- Services index: numbered editorial list ---- */}
       <section className="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <Reveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold tracking-[0.22em] uppercase text-brand-600 dark:text-brand-400">
               {t("servicesSection.eyebrow")}
@@ -181,17 +187,17 @@ export default async function HomePage({
             {t("servicesSection.cta")}
             <ArrowRight className="h-4 w-4" />
           </Link>
-        </div>
+        </Reveal>
 
-        <div className="mt-12">
+        <Reveal delay={150} className="mt-12">
           <ServicesShowcase label={t("servicesSection.eyebrow")} items={services} />
-        </div>
+        </Reveal>
       </section>
 
       {/* ---- Features grid ---- */}
       <section className="border-y border-border/70 bg-surface/60">
         <div className="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start lg:gap-14">
+          <Reveal className="grid gap-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start lg:gap-14">
             <div>
               <p className="text-xs font-semibold tracking-[0.22em] uppercase text-brand-600 dark:text-brand-400">
                 {t("features.eyebrow")}
@@ -203,9 +209,9 @@ export default async function HomePage({
             <p className="text-base text-muted-foreground lg:pt-9">
               {t("features.subtitle")}
             </p>
-          </div>
+          </Reveal>
 
-          <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <Reveal as="ul" delay={150} className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {features.map((feature) => (
               <li
                 key={feature.title}
@@ -222,13 +228,13 @@ export default async function HomePage({
                 </p>
               </li>
             ))}
-          </ul>
+          </Reveal>
         </div>
       </section>
 
       {/* ---- Process timeline ---- */}
       <section className="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal as="div" className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-semibold tracking-[0.22em] uppercase text-brand-600 dark:text-brand-400">
             {t("process.eyebrow")}
           </p>
@@ -238,9 +244,9 @@ export default async function HomePage({
           <p className="mt-4 text-base text-muted-foreground">
             {t("process.subtitle")}
           </p>
-        </div>
+        </Reveal>
 
-        <ol className="relative mt-14 grid gap-10 lg:grid-cols-4 lg:gap-6">
+        <Reveal as="ol" delay={150} className="relative mt-14 grid gap-10 lg:grid-cols-4 lg:gap-6">
           <span
             aria-hidden
             className="absolute top-6 right-[12%] left-[12%] hidden h-px bg-gradient-to-r from-brand-600/10 via-brand-600/40 to-brand-600/10 lg:block dark:from-brand-400/10 dark:via-brand-400/40 dark:to-brand-400/10"
@@ -261,13 +267,13 @@ export default async function HomePage({
               </p>
             </li>
           ))}
-        </ol>
+        </Reveal>
       </section>
 
       {/* ---- Industries: gallery hover carousel ---- */}
       <section className="border-t border-border/70 bg-surface/60">
         <div className="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
-          <div className="max-w-2xl">
+          <Reveal className="max-w-2xl">
             <p className="text-xs font-semibold tracking-[0.22em] uppercase text-brand-600 dark:text-brand-400">
               {t("industriesSection.eyebrow")}
             </p>
@@ -277,11 +283,11 @@ export default async function HomePage({
             <p className="mt-4 text-base text-muted-foreground">
               {t("industriesSection.subtitle")}
             </p>
-          </div>
+          </Reveal>
 
-          <div className="mt-12">
+          <Reveal delay={150} className="mt-12">
             <IndustryGallery />
-          </div>
+          </Reveal>
 
           <p className="mt-6 max-w-3xl text-sm text-muted-foreground">
             {t("industriesSection.more")}
@@ -297,7 +303,7 @@ export default async function HomePage({
         />
         <div aria-hidden className="bg-noise absolute inset-0 -z-10 opacity-[0.03]" />
         <div className="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <Reveal className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-2xl">
               <p className="text-xs font-semibold tracking-[0.22em] uppercase text-brand-600 dark:text-brand-400">
                 {t("languagesSection.eyebrow")}
@@ -316,13 +322,15 @@ export default async function HomePage({
               {t("languagesSection.cta")}
               <ArrowRight className="h-4 w-4" />
             </Link>
-          </div>
+          </Reveal>
 
-          <div className="mt-12">
+          <Reveal delay={150} className="mt-12">
             <LanguageTerminal />
-          </div>
+          </Reveal>
         </div>
       </section>
+
+      <LatestInsights />
 
       <ClientReviews />
 

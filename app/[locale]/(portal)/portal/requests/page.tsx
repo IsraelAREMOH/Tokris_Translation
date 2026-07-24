@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { LoadErrorBanner } from "@/components/portal/load-error-banner";
 import { StatusBadge } from "@/components/status-badge";
 import { Link } from "@/i18n/navigation";
 import { requireUser } from "@/lib/auth/guards";
@@ -20,10 +21,12 @@ export default async function PortalRequestsPage() {
   const { supabase } = await requireUser();
 
   // RLS limits this to the logged-in client's own projects.
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from("projects")
     .select("id, source_language, target_language, status, deadline, created_at")
     .order("created_at", { ascending: false });
+
+  if (error) console.error("Portal requests: load failed:", error.message);
 
   const projects = (data ?? []) as ProjectRow[];
 
@@ -39,7 +42,9 @@ export default async function PortalRequestsPage() {
         </p>
       </div>
 
-      {projects.length === 0 ? (
+      {error ? (
+        <LoadErrorBanner message="Couldn't load your requests right now — please refresh the page." />
+      ) : projects.length === 0 ? (
         <div className="flex flex-col items-start gap-4 rounded-xl border border-dashed border-border bg-surface px-6 py-10 shadow-elevated">
           <p className="text-sm text-muted-foreground">
             No requests yet — upload your documents and receive a free quote

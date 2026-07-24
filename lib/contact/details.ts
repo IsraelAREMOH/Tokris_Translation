@@ -25,9 +25,12 @@ export type ContactDetails = {
 export async function getContactDetails(): Promise<ContactDetails> {
   const content = await getSiteContent();
   return {
+    // Site Content only has a single "Contact phone" field
+    // (lib/content/constants.ts's SITE_CONTENT_FIELDS) — the second number
+    // has no admin field to override it, so it's always the brand default.
     phones: [
-      content.contact_phone_primary || DEFAULT_CONTACT_PHONES[0],
-      content.contact_phone_secondary || DEFAULT_CONTACT_PHONES[1],
+      content.contact_phone || DEFAULT_CONTACT_PHONES[0],
+      DEFAULT_CONTACT_PHONES[1],
     ],
     email: content.contact_email || DEFAULT_CONTACT_EMAIL,
     whatsappNumber:
@@ -42,4 +45,21 @@ export function telHref(phone: string) {
 
 export function mapsHref(address: string) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+}
+
+/**
+ * `null` when no WhatsApp number is configured anywhere (Site Content or
+ * NEXT_PUBLIC_WHATSAPP_NUMBER) — callers should hide the WhatsApp CTA
+ * entirely rather than link to bare https://wa.me/, which opens WhatsApp
+ * to nothing. Logged once per request so an unconfigured deploy is visible
+ * in server logs instead of only discoverable by clicking the button.
+ */
+export function getWhatsAppHref(whatsappNumber: string): string | null {
+  if (!whatsappNumber) {
+    console.warn(
+      "WhatsApp number isn't configured (Admin -> Site Content, or NEXT_PUBLIC_WHATSAPP_NUMBER) — hiding the WhatsApp CTA.",
+    );
+    return null;
+  }
+  return `https://wa.me/${whatsappNumber}`;
 }

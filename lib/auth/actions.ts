@@ -4,6 +4,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 
 import { redirect } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { isSafeInternalPath } from "@/lib/validation";
 
 export type AuthFormState = {
   error?: string;
@@ -13,8 +14,7 @@ export type AuthFormState = {
 /** Only allow internal redirect targets (blocks open-redirect abuse). */
 function safeRedirectPath(value: FormDataEntryValue | null): string | null {
   if (typeof value !== "string") return null;
-  if (!value.startsWith("/") || value.startsWith("//")) return null;
-  return value;
+  return isSafeInternalPath(value) ? value : null;
 }
 
 export async function login(
@@ -91,7 +91,6 @@ export async function register(
   });
 
   if (error) {
-    
     if (error.code === "user_already_exists") {
       return { error: t("emailInUse") };
     }

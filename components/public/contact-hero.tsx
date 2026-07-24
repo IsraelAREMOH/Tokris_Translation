@@ -2,6 +2,8 @@ import { ArrowRight, MessageCircle } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 
+import { getWhatsAppHref } from "@/lib/contact/details";
+
 // Reuses the same six sector photos as the home page's industry gallery —
 // already proxied through next/image's remotePatterns — cropped to portrait
 // here so the strip reads as its own moment rather than a repeated section.
@@ -24,9 +26,7 @@ export async function ContactHero({
   whatsappNumber: string;
 }) {
   const t = await getTranslations("contact");
-  const whatsappHref = whatsappNumber
-    ? `https://wa.me/${whatsappNumber}`
-    : "https://wa.me/";
+  const whatsappHref = getWhatsAppHref(whatsappNumber);
 
   return (
     <section className="relative isolate overflow-hidden pb-48 sm:pb-60">
@@ -59,15 +59,17 @@ export async function ContactHero({
             {t("heroCta")}
             <ArrowRight className="h-4 w-4" />
           </a>
-          <a
-            href={whatsappHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-7 py-3 text-sm font-semibold text-foreground shadow-elevated transition-transform duration-200 ease-spring hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 active:translate-y-0 active:scale-[0.98]"
-          >
-            <MessageCircle className="h-4 w-4" />
-            {t("whatsappCta")}
-          </a>
+          {whatsappHref ? (
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-7 py-3 text-sm font-semibold text-foreground shadow-elevated transition-transform duration-200 ease-spring hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 active:translate-y-0 active:scale-[0.98]"
+            >
+              <MessageCircle className="h-4 w-4" />
+              {t("whatsappCta")}
+            </a>
+          ) : null}
         </div>
       </div>
 

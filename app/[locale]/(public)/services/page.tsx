@@ -20,6 +20,7 @@ import Image from "next/image";
 import { CtaBand } from "@/components/public/cta-band";
 import { LanguagesCatalog } from "@/components/public/languages-catalog";
 import { ServicesHeroAccordion } from "@/components/public/services-hero-accordion";
+import { Reveal } from "@/components/ui/reveal";
 import { Link } from "@/i18n/navigation";
 
 export const metadata: Metadata = { title: "Services" };
@@ -126,11 +127,11 @@ export default async function ServicesPage({
   return (
     <>
       <section className="relative isolate overflow-hidden">
-        <div
-          aria-hidden
-          className="absolute inset-0 -z-10 bg-[radial-gradient(48rem_30rem_at_85%_-15%,rgb(56_152_139/0.14),transparent_62%),radial-gradient(38rem_24rem_at_-8%_110%,rgb(208_145_62/0.1),transparent_62%)]"
-        />
-        <div aria-hidden className="bg-noise absolute inset-0 -z-10 opacity-[0.04]" />
+        <div aria-hidden className="absolute inset-0 -z-10">
+          <div className="animate-ambient-a absolute -top-44 right-[-10%] h-[36rem] w-[36rem] rounded-full bg-[radial-gradient(closest-side,rgb(56_152_139/0.26),transparent_70%)] blur-2xl" />
+          <div className="animate-ambient-b absolute bottom-[-32%] left-[-12%] h-[32rem] w-[32rem] rounded-full bg-[radial-gradient(closest-side,rgb(208_145_62/0.2),transparent_70%)] blur-2xl" />
+          <div className="bg-noise absolute inset-0 opacity-[0.04]" />
+        </div>
 
         <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-4 pt-20 pb-6 sm:px-6 sm:pt-28 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-14">
           <div>
@@ -161,7 +162,10 @@ export default async function ServicesPage({
 
         <div className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6">
           {/* Flagship translation card with the full document-type coverage */}
-          <div className="group flex flex-col overflow-hidden rounded-2xl border border-border/60 bg-surface/40 shadow-elevated backdrop-blur-md lg:flex-row">
+          <Reveal
+            as="div"
+            className="group flex flex-col overflow-hidden rounded-2xl border border-border/60 bg-surface/40 shadow-elevated backdrop-blur-md lg:flex-row"
+          >
             <div className="relative aspect-[16/10] overflow-hidden lg:aspect-auto lg:w-2/5">
               <Image
                 src={TRANSLATION_IMAGE}
@@ -200,9 +204,9 @@ export default async function ServicesPage({
                 ))}
               </ul>
             </div>
-          </div>
+          </Reveal>
 
-          <ul className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <Reveal as="ul" delay={150} className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICE_CARDS.map((service) => (
               <li
                 key={service.key}
@@ -227,6 +231,12 @@ export default async function ServicesPage({
                   <span className="absolute bottom-4 left-4 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/20 bg-white/15 text-white shadow-floating backdrop-blur-md">
                     <service.icon className="h-5 w-5" />
                   </span>
+                  {service.key === "certified" && (
+                    <span className="absolute top-4 right-4 inline-flex items-center gap-1.5 rounded-full bg-seal-600 px-3 py-1.5 text-xs font-semibold text-white shadow-floating">
+                      <BadgeCheck className="h-3.5 w-3.5" />
+                      {t("certifiedBadge")}
+                    </span>
+                  )}
                 </div>
                 <div className="flex flex-1 flex-col p-6">
                   <h2 className="font-display text-lg font-semibold tracking-[-0.01em] text-foreground">
@@ -238,14 +248,14 @@ export default async function ServicesPage({
                 </div>
               </li>
             ))}
-          </ul>
+          </Reveal>
         </div>
       </section>
 
       {/* ---- Interpretation formats ---- */}
       <section className="border-t border-border/70">
         <div className="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start lg:gap-14">
+          <Reveal className="grid gap-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start lg:gap-14">
             <div>
               <p className="text-xs font-semibold tracking-[0.22em] uppercase text-brand-600 dark:text-brand-400">
                 {t("formats.eyebrow")}
@@ -257,9 +267,9 @@ export default async function ServicesPage({
             <p className="text-base text-muted-foreground lg:pt-9">
               {t("formats.subtitle")}
             </p>
-          </div>
+          </Reveal>
 
-          <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <Reveal as="ul" delay={150} className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {INTERPRETATION_FORMATS.map((format) => (
               <li
                 key={format.key}
@@ -276,7 +286,7 @@ export default async function ServicesPage({
                 </p>
               </li>
             ))}
-          </ul>
+          </Reveal>
         </div>
       </section>
 
@@ -286,28 +296,30 @@ export default async function ServicesPage({
         className="scroll-mt-20 border-t border-border/70 bg-surface/60"
       >
         <div className="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
-          <div className="max-w-2xl">
-            <p className="text-xs font-semibold tracking-[0.22em] uppercase text-brand-600 dark:text-brand-400">
-              {tl("eyebrow")}
-            </p>
-            <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-0.03em] text-foreground sm:text-4xl">
-              {tl("title")}
-            </h2>
-            <p className="mt-4 text-base text-muted-foreground">
-              {tl("description")}
-            </p>
-          </div>
+          <Reveal>
+            <div className="max-w-2xl">
+              <p className="text-xs font-semibold tracking-[0.22em] uppercase text-brand-600 dark:text-brand-400">
+                {tl("eyebrow")}
+              </p>
+              <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-0.03em] text-foreground sm:text-4xl">
+                {tl("title")}
+              </h2>
+              <p className="mt-4 text-base text-muted-foreground">
+                {tl("description")}
+              </p>
+            </div>
 
-          <div className="mt-8 flex max-w-2xl items-start gap-3 rounded-2xl border border-brand-600/20 bg-brand-50 px-5 py-4 dark:border-brand-400/20 dark:bg-brand-950">
-            <MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-brand-700 dark:text-brand-300" />
-            <p className="text-sm text-brand-800 dark:text-brand-200">
-              {tl("pairsNote")}
-            </p>
-          </div>
+            <div className="mt-8 flex max-w-2xl items-start gap-3 rounded-2xl border border-brand-600/20 bg-brand-50 px-5 py-4 dark:border-brand-400/20 dark:bg-brand-950">
+              <MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-brand-700 dark:text-brand-300" />
+              <p className="text-sm text-brand-800 dark:text-brand-200">
+                {tl("pairsNote")}
+              </p>
+            </div>
+          </Reveal>
 
-          <div className="mt-12">
+          <Reveal delay={150} className="mt-12">
             <LanguagesCatalog />
-          </div>
+          </Reveal>
         </div>
       </section>
 

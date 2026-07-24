@@ -1,6 +1,7 @@
 import { ArrowRight, Mail, MessageCircle, Phone } from "lucide-react";
 import type { Metadata } from "next";
 
+import { LoadErrorBanner } from "@/components/portal/load-error-banner";
 import { StatusBadge } from "@/components/status-badge";
 import { Link } from "@/i18n/navigation";
 import { requireUser } from "@/lib/auth/guards";
@@ -70,9 +71,9 @@ export default async function PortalDashboardPage() {
 
   const [
     { data: profileData },
-    { data: projectsData },
-    { data: messagesData },
-    { count: deliveredFileCount },
+    { data: projectsData, error: projectsError },
+    { data: messagesData, error: messagesError },
+    { count: deliveredFileCount, error: filesError },
     siteContent,
   ] = await Promise.all([
     supabase.from("profiles").select("full_name").eq("id", user.id).single(),
@@ -96,6 +97,16 @@ export default async function PortalDashboardPage() {
       .eq("file_type", "completed"),
     getSiteContent(),
   ]);
+
+  if (projectsError) console.error("Portal dashboard: projects load failed:", projectsError.message);
+  if (messagesError) console.error("Portal dashboard: messages load failed:", messagesError.message);
+  if (filesError) console.error("Portal dashboard: file count load failed:", filesError.message);
+
+  // A failed query defaults to [] below, which looks identical to "you
+  // genuinely have none" — this flag lets the render branch tell those
+  // apart instead of showing new-client onboarding to an existing client
+  // whose data just failed to load.
+  const hasLoadError = Boolean(projectsError || messagesError || filesError);
 
   const projects = (projectsData ?? []) as ProjectRow[];
   const messages = (messagesData ?? []) as unknown as MessageRow[];
@@ -148,7 +159,11 @@ export default async function PortalDashboardPage() {
         </Link>
       </div>
 
-      {projects.length === 0 ? (
+      {hasLoadError ? (
+        <LoadErrorBanner message="Some of your dashboard data couldn't load right now — please refresh the page." />
+      ) : null}
+
+      {projects.length === 0 && !hasLoadError ? (
         <section className="rounded-xl border border-border bg-surface p-6 shadow-elevated sm:p-8">
           <p className="text-xs font-semibold tracking-[0.22em] uppercase text-brand-600 dark:text-brand-400">
             Getting started

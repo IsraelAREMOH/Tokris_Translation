@@ -4,6 +4,7 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { Fraunces, Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 
+import { AnalyticsScripts } from "@/components/analytics/analytics-scripts";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { routing } from "@/i18n/routing";
 
@@ -76,6 +77,7 @@ export default async function LocaleLayout({
             {children}
           </NextIntlClientProvider>
         </ThemeProvider>
+        <AnalyticsScripts />
       </body>
     </html>
   );

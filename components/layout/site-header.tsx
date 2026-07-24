@@ -4,6 +4,7 @@ import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Link } from "@/i18n/navigation";
 
 import { MobileNav } from "./mobile-nav";
+import { PrimaryNav } from "./primary-nav";
 
 export async function SiteHeader() {
   const t = await getTranslations("nav");
@@ -11,6 +12,7 @@ export async function SiteHeader() {
   const items = [
     { href: "/", label: t("home") },
     { href: "/services", label: t("services") },
+    { href: "/blog", label: t("blog") },
     { href: "/about", label: t("about") },
     { href: "/contact", label: t("contact") },
   ];
@@ -26,17 +28,7 @@ export async function SiteHeader() {
           <span className="text-brand-600 dark:text-brand-400">.</span>
         </Link>
 
-        <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
-          {items.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-full px-3.5 py-2 text-sm font-medium text-muted-foreground transition-transform duration-200 ease-spring hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 active:scale-95"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <PrimaryNav items={items} />
 
         <div className="flex items-center gap-2.5">
           <ThemeToggle />

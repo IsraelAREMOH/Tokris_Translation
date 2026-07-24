@@ -3,6 +3,7 @@
     "home": "Home",
     "about": "About Us",
     "services": "Services",
+    "blog": "Blog",
     "contact": "Contact",
     "quote": "Request a Quote",
     "login": "Log in",
@@ -24,6 +25,12 @@
   "notFound": {
     "title": "Page not found",
     "description": "The page you are looking for does not exist or has been moved.",
+    "back": "Back to home"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "description": "An unexpected error occurred. Please try again, or head back home.",
+    "retry": "Try again",
     "back": "Back to home"
   },
   "cta": {
@@ -156,6 +163,7 @@
     "doc16": "Apostille & Legalization Support",
     "certifiedTitle": "Certified Translation",
     "certifiedBody": "Accepted by embassies, immigration authorities, universities, government agencies, courts, and international organizations. Every certified translation includes a professional statement of accuracy where applicable.",
+    "certifiedBadge": "Certified",
     "swornTitle": "Sworn Translation",
     "swornBody": "Completed or validated by officially authorized translators for immigration applications, visa processing, court proceedings, embassy requirements, university admissions, and civil registration documents.",
     "interpretationTitle": "Interpretation Services",
@@ -450,6 +458,64 @@
       "emailNotConfirmed": "Please confirm your email address before logging in.",
       "emailInUse": "An account with this email already exists.",
       "generic": "Something went wrong. Please try again."
+    }
+  },
+  "blog": {
+    "landing": {
+      "eyebrow": "Insights & Resources",
+      "title": "The TGS Blog",
+      "subtitle": "Practical guidance on certified translation, interpretation, localization and going global from the team handling it every day.",
+      "searchPlaceholder": "Search articles…",
+      "featuredEyebrow": "Featured",
+      "readMore": "Read the full story",
+      "latestTitle": "Latest Articles",
+      "popularTitle": "Popular Articles",
+      "categoriesTitle": "Browse by Category",
+      "tagsTitle": "Browse by Tag",
+      "noResults": "No articles match your search try a different term.",
+      "empty": "No articles published yet check back soon.",
+      "fuzzyNotice": "No exact matches showing results for a similar term.",
+      "suggestionsIntro": "Try browsing instead:"
+    },
+    "article": {
+      "tableOfContents": "On this page",
+      "share": "Share this article",
+      "copyLink": "Copy link",
+      "linkCopied": "Copied!",
+      "relatedTitle": "Related articles",
+      "previousPost": "Previous",
+      "nextPost": "Next",
+      "aboutAuthor": "About the author",
+      "updated": "Updated {date}",
+      "readingTime": "{minutes} min read"
+    },
+    "archive": {
+      "categoryTitle": "Category: {name}",
+      "tagTitle": "Tag: {name}",
+      "backToBlog": "All articles",
+      "searchPlaceholder": "Search in this category…",
+      "empty": "No articles here yet.",
+      "noResults": "No articles match your search.",
+      "suggestionsIntro": "Try browsing instead:"
+    },
+    "newsletter": {
+      "title": "Stay in the loop",
+      "description": "New articles and language industry insights, straight to your inbox no spam.",
+      "emailLabel": "Email address",
+      "placeholder": "you@email.com",
+      "submit": "Subscribe",
+      "success": "You're subscribed thank you!"
+    },
+    "homepage": {
+      "eyebrow": "From the Blog",
+      "title": "Latest Insights",
+      "subtitle": "Guidance on certified translation, interpretation and going global.",
+      "viewAll": "View all articles"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page {current} of {total}"
     }
   }
 }

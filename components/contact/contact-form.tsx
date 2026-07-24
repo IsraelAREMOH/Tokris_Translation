@@ -26,11 +26,16 @@ export function ContactForm() {
         value={startedAt}
         suppressHydrationWarning
       />
-      {/* Honeypot: hidden from real users, tempting to bots. */}
-      <div aria-hidden="true" className="sr-only">
-        <label htmlFor="contact-company">{t("honeypot")}</label>
+      {/* Honeypot: hidden from real users, tempting to bots. Positioned
+          off-screen (not just visually clipped like `sr-only`) — that's the
+          hiding technique browser/password-manager autofill heuristics
+          actually check for and skip, whereas clip-based hiding is often
+          still filled since it's indistinguishable from legitimate
+          accessible-but-visually-hidden content. */}
+      <div aria-hidden="true" className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden">
+        <label htmlFor="contact-hp">{t("honeypot")}</label>
         <input
-          id="contact-company"
+          id="contact-hp"
           name={HONEYPOT_FIELD}
           type="text"
           tabIndex={-1}

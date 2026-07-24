@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
+import { Reveal } from "@/components/ui/reveal";
 import { Link } from "@/i18n/navigation";
 
 /** High-impact closing CTA panel shared across the public pages. */
@@ -9,7 +10,7 @@ export async function CtaBand() {
 
   return (
     <section className="mx-auto w-full max-w-6xl px-4 pb-20 sm:px-6 sm:pb-28">
-      <div className="relative isolate overflow-hidden rounded-3xl bg-brand-800 px-6 py-14 text-center shadow-floating sm:px-12 sm:py-16 dark:bg-brand-900">
+      <Reveal className="relative isolate overflow-hidden rounded-3xl bg-brand-800 px-6 py-14 text-center shadow-floating sm:px-12 sm:py-16 dark:bg-brand-900">
         <div
           aria-hidden
           className="absolute inset-0 -z-10 bg-[radial-gradient(36rem_20rem_at_80%_-20%,rgb(87_178_165/0.45),transparent_65%),radial-gradient(30rem_18rem_at_5%_120%,rgb(208_145_62/0.3),transparent_62%)]"
@@ -31,7 +32,7 @@ export async function CtaBand() {
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

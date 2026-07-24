@@ -3,6 +3,13 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin();
 
+// The Media Library serves its files straight from the Supabase Storage
+// public URL — computed from the project URL so this stays correct if the
+// project ever changes, rather than hardcoding the hostname.
+const supabaseHostname = process.env.NEXT_PUBLIC_SUPABASE_URL
+  ? new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).hostname
+  : undefined;
+
 const nextConfig: NextConfig = {
   // Hide the floating dev-tools indicator (bottom-left) in development —
   // the WhatsApp button is the only floating widget the site should show.
@@ -18,6 +25,14 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "flagcdn.com",
       },
+      ...(supabaseHostname
+        ? [
+            {
+              protocol: "https" as const,
+              hostname: supabaseHostname,
+            },
+          ]
+        : []),
     ],
   },
   experimental: {

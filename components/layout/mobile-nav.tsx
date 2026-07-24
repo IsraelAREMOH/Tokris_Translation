@@ -50,15 +50,23 @@ export function MobileNav({
         }`}
       >
         <nav aria-label="Mobile" className="flex flex-col gap-1">
-          {items.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-transform duration-200 ease-spring hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 active:scale-[0.98]"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {items.map((item) => {
+            const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={active ? "page" : undefined}
+                className={`rounded-lg px-3 py-2.5 text-sm font-medium transition-transform duration-200 ease-spring focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 active:scale-[0.98] ${
+                  active
+                    ? "bg-brand-600/10 text-brand-700 dark:bg-brand-400/10 dark:text-brand-300"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
         <div className="mt-4 flex flex-col gap-2 border-t border-border pt-4">
           <Link

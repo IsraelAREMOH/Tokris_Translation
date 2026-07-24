@@ -13,7 +13,8 @@ import { ContactForm } from "@/components/contact/contact-form";
 import { ClientReviews } from "@/components/public/client-reviews";
 import { ContactHero } from "@/components/public/contact-hero";
 import { CtaBand } from "@/components/public/cta-band";
-import { getContactDetails, mapsHref, telHref } from "@/lib/contact/details";
+import { Reveal } from "@/components/ui/reveal";
+import { getContactDetails, getWhatsAppHref, mapsHref, telHref } from "@/lib/contact/details";
 
 export const metadata: Metadata = { title: "Contact Us" };
 
@@ -26,9 +27,7 @@ export default async function ContactPage({
   setRequestLocale(locale);
   const t = await getTranslations("contact");
   const { phones, email, whatsappNumber, address } = await getContactDetails();
-  const whatsappHref = whatsappNumber
-    ? `https://wa.me/${whatsappNumber}`
-    : "https://wa.me/";
+  const whatsappHref = getWhatsAppHref(whatsappNumber);
 
   // Quick reference details, ordered for scanning — where to find us, then
   // how to reach us directly. WhatsApp gets its own prominent CTA below
@@ -68,26 +67,30 @@ export default async function ContactPage({
 
         <div className="mx-auto grid w-full max-w-6xl items-start gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-12">
           <div className="animate-rise flex flex-col gap-5 [animation-delay:300ms]">
-            {/* Primary channel — visually leads, since it's the fastest reply */}
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-4 rounded-2xl bg-brand-600 p-6 shadow-brand transition-transform duration-300 ease-spring hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:translate-y-0 dark:bg-brand-500"
-            >
-              <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/15 transition-transform duration-300 ease-spring group-hover:scale-110">
-                <MessageCircle className="h-6 w-6 text-white" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="font-display text-lg font-semibold tracking-[-0.01em] text-white">
-                  {t("whatsappTitle")}
-                </p>
-                <p className="mt-0.5 text-sm text-white/80">
-                  {t("whatsappBody")}
-                </p>
-              </div>
-              <ArrowRight className="h-5 w-5 shrink-0 text-white/80 transition-transform duration-300 ease-spring group-hover:translate-x-1" />
-            </a>
+            {/* Primary channel — visually leads, since it's the fastest reply.
+                Hidden entirely when unconfigured rather than linking to a
+                dead https://wa.me/ with no number. */}
+            {whatsappHref ? (
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-4 rounded-2xl bg-brand-600 p-6 shadow-brand transition-transform duration-300 ease-spring hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:translate-y-0 dark:bg-brand-500"
+              >
+                <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/15 transition-transform duration-300 ease-spring group-hover:scale-110">
+                  <MessageCircle className="h-6 w-6 text-white" />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <p className="font-display text-lg font-semibold tracking-[-0.01em] text-white">
+                    {t("whatsappTitle")}
+                  </p>
+                  <p className="mt-0.5 text-sm text-white/80">
+                    {t("whatsappBody")}
+                  </p>
+                </div>
+                <ArrowRight className="h-5 w-5 shrink-0 text-white/80 transition-transform duration-300 ease-spring group-hover:translate-x-1" />
+              </a>
+            ) : null}
 
             {/* Quick reference details — one consolidated, scannable block
                 instead of a repeated card per channel. */}
@@ -142,16 +145,16 @@ export default async function ContactPage({
 
       {/* ---- FAQ ---- */}
       <section className="mx-auto w-full max-w-3xl px-4 py-20 sm:px-6 sm:py-24">
-        <div className="text-center">
+        <Reveal className="text-center">
           <p className="text-xs font-semibold tracking-[0.22em] uppercase text-brand-600 dark:text-brand-400">
             {t("faq.eyebrow")}
           </p>
           <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-0.03em] text-foreground sm:text-4xl">
             {t("faq.title")}
           </h2>
-        </div>
+        </Reveal>
 
-        <div className="mt-10 flex flex-col gap-3">
+        <Reveal delay={150} className="mt-10 flex flex-col gap-3">
           {[1, 2, 3, 4, 5].map((n) => (
             <details
               key={n}
@@ -169,7 +172,7 @@ export default async function ContactPage({
               </p>
             </details>
           ))}
-        </div>
+        </Reveal>
       </section>
 
       {/* ---- Client reviews ---- */}

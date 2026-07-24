@@ -54,7 +54,7 @@ export function StatusSelect({
       ) : null}
       {state.success && !state.error ? (
         <p role="status" className="text-xs font-medium text-brand-700 dark:text-brand-300">
-          Status updated — the client sees it in their portal immediately.
+          Status updated the client sees it in their portal immediately.
         </p>
       ) : null}
 

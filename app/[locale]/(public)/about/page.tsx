@@ -14,6 +14,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 
 import { CtaBand } from "@/components/public/cta-band";
+import { Reveal } from "@/components/ui/reveal";
 
 export const metadata: Metadata = { title: "About Us" };
 
@@ -60,11 +61,11 @@ export default async function AboutPage({
     <>
       {/* ---- Story: split hero ---- */}
       <section className="relative isolate overflow-hidden">
-        <div
-          aria-hidden
-          className="absolute inset-0 -z-10 bg-[radial-gradient(48rem_30rem_at_85%_-15%,rgb(56_152_139/0.14),transparent_62%),radial-gradient(38rem_24rem_at_-10%_110%,rgb(208_145_62/0.1),transparent_62%)]"
-        />
-        <div aria-hidden className="bg-noise absolute inset-0 -z-10 opacity-[0.04]" />
+        <div aria-hidden className="absolute inset-0 -z-10">
+          <div className="animate-ambient-a absolute -top-44 right-[-12%] h-[36rem] w-[36rem] rounded-full bg-[radial-gradient(closest-side,rgb(56_152_139/0.26),transparent_70%)] blur-2xl" />
+          <div className="animate-ambient-b absolute bottom-[-32%] left-[-14%] h-[32rem] w-[32rem] rounded-full bg-[radial-gradient(closest-side,rgb(208_145_62/0.2),transparent_70%)] blur-2xl" />
+          <div className="bg-noise absolute inset-0 opacity-[0.04]" />
+        </div>
 
         <div className="mx-auto grid w-full max-w-6xl items-center gap-14 px-4 py-20 sm:px-6 sm:py-28 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
@@ -112,7 +113,10 @@ export default async function AboutPage({
 
       {/* ---- Vision / History split columns ---- */}
       <section className="border-y border-border/70 bg-surface/60">
-        <div className="mx-auto grid w-full max-w-6xl gap-5 px-4 py-20 sm:px-6 sm:py-24 lg:grid-cols-2">
+        <Reveal
+          as="div"
+          className="mx-auto grid w-full max-w-6xl gap-5 px-4 py-20 sm:px-6 sm:py-24 lg:grid-cols-2"
+        >
           <div className="rounded-2xl border border-border/60 bg-surface/40 p-8 shadow-elevated backdrop-blur-md">
             <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-600/10 text-brand-700 dark:bg-brand-400/10 dark:text-brand-300">
               <Compass className="h-5 w-5" />
@@ -135,12 +139,12 @@ export default async function AboutPage({
               {t("missionBody")}
             </p>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* ---- TOKRIS framework: lettered pillars ---- */}
       <section className="mx-auto w-full max-w-6xl px-4 pt-20 sm:px-6 sm:pt-24">
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start lg:gap-14">
+        <Reveal className="grid gap-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start lg:gap-14">
           <div>
             <p className="text-xs font-semibold tracking-[0.22em] uppercase text-brand-600 dark:text-brand-400">
               {t("tokris.eyebrow")}
@@ -152,9 +156,9 @@ export default async function AboutPage({
           <p className="text-base text-muted-foreground lg:pt-9">
             {t("tokris.subtitle")}
           </p>
-        </div>
+        </Reveal>
 
-        <ol className="mt-12 border-t border-border/70">
+        <Reveal as="ol" delay={150} className="mt-12 border-t border-border/70">
           {pillars.map((pillar) => (
             <li
               key={pillar.letter}
@@ -174,12 +178,15 @@ export default async function AboutPage({
               </p>
             </li>
           ))}
-        </ol>
+        </Reveal>
       </section>
 
       {/* ---- Wide library banner ---- */}
       <section className="mx-auto w-full max-w-6xl px-4 pt-20 sm:px-6 sm:pt-24">
-        <div className="relative aspect-[21/9] overflow-hidden rounded-3xl shadow-floating">
+        <Reveal
+          as="div"
+          className="relative aspect-[21/9] overflow-hidden rounded-3xl shadow-floating"
+        >
           <Image
             src={LIBRARY_IMAGE}
             alt={t("imageAlt2")}
@@ -207,20 +214,20 @@ export default async function AboutPage({
               </div>
             ))}
           </dl>
-        </div>
+        </Reveal>
       </section>
 
       {/* ---- Values grid ---- */}
       <section className="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
-        <div className="max-w-2xl">
+        <Reveal className="max-w-2xl">
           <h2 className="font-display text-3xl font-semibold tracking-[-0.03em] text-foreground sm:text-4xl">
             {t("valuesTitle")}
           </h2>
           <p className="mt-4 text-base text-muted-foreground">
             {t("valuesSubtitle")}
           </p>
-        </div>
-        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        </Reveal>
+        <Reveal as="ul" delay={150} className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {values.map((value) => (
             <li
               key={value.title}
@@ -235,7 +242,7 @@ export default async function AboutPage({
               <p className="mt-2 text-sm text-muted-foreground">{value.body}</p>
             </li>
           ))}
-        </ul>
+        </Reveal>
       </section>
 
       <CtaBand />

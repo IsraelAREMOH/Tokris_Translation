@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
+import { getWhatsAppHref } from "@/lib/contact/details";
 import { getSiteContent } from "@/lib/content/site-content";
 
 export async function WhatsAppFloat() {
@@ -8,7 +9,11 @@ export async function WhatsAppFloat() {
   const content = await getSiteContent();
   const number =
     content.whatsapp_number || process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "";
-  const href = number ? `https://wa.me/${number}` : "https://wa.me/";
+  const href = getWhatsAppHref(number);
+
+  // Hide entirely rather than link to bare https://wa.me/, which opens
+  // WhatsApp to nothing — a dead button is worse than no button.
+  if (!href) return null;
 
   return (
     <a

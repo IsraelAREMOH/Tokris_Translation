@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { AutoRefresh } from "@/components/auto-refresh";
 import { FileDownloadList } from "@/components/file-download-list";
 import { MessageForm } from "@/components/messages/message-form";
+import { LoadErrorBanner } from "@/components/portal/load-error-banner";
 import { StatusBadge } from "@/components/status-badge";
 import { StatusTimeline } from "@/components/status-timeline";
 import { Link } from "@/i18n/navigation";
@@ -52,7 +53,12 @@ export default async function PortalRequestDetailPage({
   ]);
 
   // RLS scopes this to the client's own projects — someone else's id 404s.
-  const { data: projectData } = await supabase
+  // .single() itself returns an "error" for the legitimate zero-rows case
+  // (code PGRST116), so only a DIFFERENT error code means the query
+  // actually failed — that's re-thrown for app/[locale]/error.tsx to catch
+  // with a retry affordance, rather than 404ing a project that may well
+  // still exist (a transient failure shouldn't look like "this was deleted").
+  const { data: projectData, error: projectError } = await supabase
     .from("projects")
     .select(
       "id, client_id, source_language, target_language, deadline, instructions, status, created_at",
@@ -60,10 +66,16 @@ export default async function PortalRequestDetailPage({
     .eq("id", id)
     .single();
 
+  if (projectError && projectError.code !== "PGRST116") {
+    throw new Error(`Failed to load project ${id}: ${projectError.message}`);
+  }
   if (!projectData) notFound();
   const project = projectData as ProjectDetail;
 
-  const [{ data: filesData }, { data: messagesData }] = await Promise.all([
+  const [
+    { data: filesData, error: filesError },
+    { data: messagesData, error: messagesError },
+  ] = await Promise.all([
     supabase
       .from("project_files")
       .select("id, file_name, storage_path, file_type, uploaded_at")
@@ -75,6 +87,11 @@ export default async function PortalRequestDetailPage({
       .eq("project_id", id)
       .order("created_at", { ascending: true }),
   ]);
+
+  if (filesError) console.error("Portal request detail: files load failed:", filesError.message);
+  if (messagesError) {
+    console.error("Portal request detail: messages load failed:", messagesError.message);
+  }
 
   const files = (filesData ?? []) as FileRow[];
   const messages = (messagesData ?? []) as MessageRow[];
@@ -127,27 +144,33 @@ export default async function PortalRequestDetailPage({
         </div>
       </section>
 
-      <section className="rounded-xl border border-border bg-surface p-5 shadow-elevated">
-        <h2 className="font-display text-base font-semibold tracking-[-0.01em] text-foreground">
-          Your completed translation
-        </h2>
-        <FileDownloadList
-          files={completedFiles}
-          urlByPath={urlByPath}
-          emptyText="Your finished documents will appear here for download as soon as they're delivered."
-        />
-      </section>
+      {filesError ? (
+        <LoadErrorBanner message="Couldn't load your files right now — please refresh the page." />
+      ) : (
+        <>
+          <section className="rounded-xl border border-border bg-surface p-5 shadow-elevated">
+            <h2 className="font-display text-base font-semibold tracking-[-0.01em] text-foreground">
+              Your completed translation
+            </h2>
+            <FileDownloadList
+              files={completedFiles}
+              urlByPath={urlByPath}
+              emptyText="Your finished documents will appear here for download as soon as they're delivered."
+            />
+          </section>
 
-      <section className="rounded-xl border border-border bg-surface p-5 shadow-elevated">
-        <h2 className="font-display text-base font-semibold tracking-[-0.01em] text-foreground">
-          Your source documents
-        </h2>
-        <FileDownloadList
-          files={sourceFiles}
-          urlByPath={urlByPath}
-          emptyText="No source documents on this request."
-        />
-      </section>
+          <section className="rounded-xl border border-border bg-surface p-5 shadow-elevated">
+            <h2 className="font-display text-base font-semibold tracking-[-0.01em] text-foreground">
+              Your source documents
+            </h2>
+            <FileDownloadList
+              files={sourceFiles}
+              urlByPath={urlByPath}
+              emptyText="No source documents on this request."
+            />
+          </section>
+        </>
+      )}
 
       {project.instructions ? (
         <section className="rounded-xl border border-border bg-surface p-5 shadow-elevated">
@@ -164,7 +187,11 @@ export default async function PortalRequestDetailPage({
         <h2 className="font-display text-base font-semibold tracking-[-0.01em] text-foreground">
           Messages
         </h2>
-        {messages.length === 0 ? (
+        {messagesError ? (
+          <div className="mt-3">
+            <LoadErrorBanner message="Couldn't load your messages right now — please refresh the page." />
+          </div>
+        ) : messages.length === 0 ? (
           <p className="mt-3 text-sm text-muted-foreground">
             No messages yet — questions about your request? Send one below.
           </p>

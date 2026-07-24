@@ -18,6 +18,21 @@ export default async function AdminLayout({
     { href: "/admin/quotes", label: "Quotes" },
     { href: "/admin/files", label: "File Vault" },
     { href: "/admin/content", label: "Site Content" },
+    {
+      label: "Content Management",
+      links: [
+        { href: "/admin/blog", label: "Dashboard" },
+        { href: "/admin/blog/analytics", label: "Analytics" },
+        { href: "/admin/blog/pages", label: "Pages" },
+        { href: "/admin/blog/posts", label: "Blog Posts" },
+        { href: "/admin/blog/categories", label: "Categories" },
+        { href: "/admin/blog/tags", label: "Tags" },
+        { href: "/admin/blog/authors", label: "Authors" },
+        { href: "/admin/blog/media", label: "Media Library" },
+        { href: "/admin/blog/newsletter", label: "Newsletter" },
+        { href: "/admin/blog/seo", label: "SEO" },
+      ],
+    },
   ];
 
   return (

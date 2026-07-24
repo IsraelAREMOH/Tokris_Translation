@@ -76,26 +76,36 @@ export async function sendContactMessage(
 
   const { email: inbox } = await getContactDetails();
 
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from: process.env.CONTACT_FROM_EMAIL || "TGS Website <onboarding@resend.dev>",
-      to: [inbox],
-      reply_to: email,
-      subject: `New website enquiry from ${name}`,
-      text: [
-        `Name: ${name}`,
-        `Email: ${email}`,
-        `Phone: ${phone || "—"}`,
-        "",
-        message,
-      ].join("\n"),
-    }),
-  });
+  // A network/DNS/timeout failure throws rather than resolving with a
+  // non-ok response, so this needs its own try/catch — otherwise it escapes
+  // the Server Action uncaught and the visitor sees a generic crash page
+  // instead of the friendly errors.sendFailed message below.
+  let response: Response;
+  try {
+    response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: process.env.CONTACT_FROM_EMAIL || "TGS Website <onboarding@resend.dev>",
+        to: [inbox],
+        reply_to: email,
+        subject: `New website enquiry from ${name}`,
+        text: [
+          `Name: ${name}`,
+          `Email: ${email}`,
+          `Phone: ${phone || "—"}`,
+          "",
+          message,
+        ].join("\n"),
+      }),
+    });
+  } catch (fetchError) {
+    console.error("Contact form: Resend request threw:", fetchError);
+    return { error: t("errors.sendFailed") };
+  }
 
   if (!response.ok) {
     console.error(

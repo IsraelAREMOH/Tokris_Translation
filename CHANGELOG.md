@@ -1,5 +1,57 @@
 # Changelog
 
+## 2026-07-25 — Bug fixes
+
+- `ConfirmDialogProvider` in `components/layout/console-shell.tsx` only
+  wrapped `<ToastProvider/>`, not `{children}` — any admin component calling
+  `useConfirm()` (Newsletter/Posts/Tags/Media managers, delete buttons)
+  threw immediately on render. Now wraps the whole shell.
+- `/admin/blog/posts/new` called a `"use server"` action
+  (`createDraftPost()`) with `revalidatePath()` directly from a Server
+  Component's render, which Next.js disallows. Removed the revalidation
+  from `createDraftPost()` — an empty draft has nothing public-facing to
+  refresh, and the first real `savePost()` call already revalidates
+  everything once there's real content.
+
+## 2026-07-24 — Blog/CMS platform + site-wide CMS foundation
+
+- Full Blog/CMS built into the existing Admin Portal: DB schema
+  (`supabase/migrations/0005`–`0010`) for categories, tags, authors, posts, a
+  site-wide Media Library, newsletter subscribers, per-view analytics, and
+  slug-redirect history.
+- Admin authoring: Tiptap rich-text editor (`components/admin/blog/editor/`)
+  with custom callout/CTA-button/columns/video/image nodes, autosave, and a
+  single `savePost()` action driving Draft/Publish/Schedule/Archive.
+- Admin CRUD for categories/tags/authors/media, with a shared admin UX kit:
+  toast notifications (`sonner`), a native-`<dialog>` confirm dialog, empty
+  states, skeletons, URL-param search/pagination, and bulk actions.
+- Public blog: `/blog` landing (featured/latest/popular/browse/search/
+  newsletter), `/blog/[slug]`, category/tag archives — reading through a
+  cookie-free public Supabase client (`lib/supabase/public-server.ts`).
+- SEO: per-page metadata, dynamic OG image fallback (`app/api/og`), JSON-LD,
+  a 4-way split sitemap (`app/sitemap.ts`), `app/robots.ts`, RSS/Atom feeds,
+  and ranked full-text + fuzzy search (migration `0009`).
+- Expanded into a site-wide CMS foundation (`lib/cms/`): a real Content
+  Dashboard (stat tiles + recent activity), an Analytics page (hand-rolled
+  SVG charts, no chart library added), a Newsletter admin module with CSV
+  export, a read-only Pages registry, and an SEO audit dashboard — all
+  backed by a new append-only `activity_log` table.
+
+## 2026-07-24 — Production readiness hardening
+
+- Fixed CSV/formula-injection risk in the newsletter export, an RPC
+  (`log_newsletter_signup`) that accepted any UUID with no existence check,
+  and a backslash-based open-redirect bypass (new shared
+  `isSafeInternalPath()` in `lib/validation.ts`).
+- Added `app/[locale]/error.tsx` and `app/global-error.tsx` — the app had
+  zero error boundaries before this.
+- Cached `requireAdmin()`/`requireUser()` (`lib/auth/guards.ts`) to dedupe
+  repeated auth round-trips per navigation.
+- Fixed a dead WhatsApp CTA when unconfigured, an uncaught Resend fetch
+  failure, an autofill-vulnerable contact-form honeypot, a client portal
+  with no mobile navigation, and silently-swallowed Supabase read errors
+  across the portal.
+
 ## 2026-07-24 — Remove French locale; repo cleanup
 
 - Removed French (`fr`) from `i18n/routing.ts`'s `locales` list — the site is
@@ -34,6 +86,20 @@
   `devIndicators: false` — the WhatsApp button is the only floating widget.
 - WhatsApp float now renders the official WhatsApp glyph (inline SVG) instead
   of the placeholder lucide icon.
+
+## 2026-07-19 — TGS rebrand: About/Services/Contact, contact form, footer
+
+- About, Services, and Contact pages rebuilt from
+  `Assets/TGS  WEBSITE HERO SECTION.docx` copy: TGS story/vision/mission and
+  5-pillar section, translation-type + service cards + interpretation
+  formats, and working contact channels.
+- Real contact form (`components/contact/contact-form.tsx`,
+  `lib/contact/actions.ts`) via Resend, with server-side sanitization, a
+  honeypot, and a minimum-submit-time check.
+- `/services` hero accordion, industries hover gallery, and an
+  auto-advancing services showcase.
+- Footer/contact details centralized in `lib/contact/details.ts`
+  (site-content overrides over doc fallbacks).
 
 ## 2026-07-12 — Quote request system & storage integration
 
