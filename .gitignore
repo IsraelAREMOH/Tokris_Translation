@@ -39,6 +39,11 @@ yarn-error.log*
 # local-only dev workarounds (machine/network-specific, never shared)
 dev-insecure.ps1
 
+# internal project instructions + raw source content — kept locally, not in
+# the public repo
+/CLAUDE.md
+/Assets/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

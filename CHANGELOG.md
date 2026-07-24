@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-07-24 — Remove French locale; repo cleanup
+
+- Removed French (`fr`) from `i18n/routing.ts`'s `locales` list — the site is
+  now English-only for V1. `messages/fr.json` deleted; `messages/en.json` is
+  the sole translation catalog. The `[locale]/` route-segment architecture,
+  `next-intl` config, and `routing.locales`-driven `generateStaticParams`/
+  sitemap/proxy logic are all untouched and generic, so adding a locale back
+  later is a `messages/<locale>.json` + one array entry, no routing changes.
+  `lib/languages.ts`'s "French" entry is unrelated (a translation-service
+  language offered to clients, not a UI locale) and was left as-is.
+- Untracked `CLAUDE.md` and `Assets/` from git (kept locally, added to
+  `.gitignore`) — internal project instructions and raw source content don't
+  need to be in the public repo history going forward.
+
 ## 2026-07-19 — Portal content pass & production polish
 
 - Client portal dashboard rebuilt as a real TGS experience

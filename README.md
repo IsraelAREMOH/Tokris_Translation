@@ -22,7 +22,7 @@ Open <http://localhost:3000> — the proxy redirects to your locale
 ```
 app/
   globals.css                  # Design tokens: brand palette, fonts, shadows, motion
-  [locale]/                    # next-intl locale segment (en, fr)
+  [locale]/                    # next-intl locale segment (en only — English-only for V1)
     layout.tsx                 # Root layout: fonts, ThemeProvider, intl provider
     not-found.tsx
     [...rest]/                 # Catch-all -> renders not-found
@@ -44,7 +44,7 @@ components/
   page-placeholder.tsx         # Public-page scaffold section
   console-placeholder.tsx      # Portal/admin scaffold section
 i18n/                          # next-intl routing, navigation, request config
-messages/                      # en.json, fr.json translation catalogs
+messages/                      # en.json translation catalog (English-only for V1)
 lib/supabase/                  # Browser + server Supabase client factories
 proxy.ts                       # next-intl locale middleware (Next 16 proxy convention)
 ```
