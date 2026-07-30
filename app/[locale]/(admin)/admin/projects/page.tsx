@@ -102,7 +102,7 @@ export default async function AdminProjectsPage({
           <p className="text-sm text-muted-foreground">
             {activeFilter
               ? `No projects currently in “${activeFilter}”.`
-              : "No quote requests yet — new submissions will appear here."}
+              : "No quote requests yet, new submissions will appear here."}
           </p>
         </div>
       ) : (

@@ -71,8 +71,8 @@ export function PagesTable({ pages }: { pages: CmsPage[] }) {
                       </Link>
                     ) : (
                       <span
-                        title="Managed in code — no admin fields yet"
-                        aria-label={`${page.title} is managed in code — no admin fields yet`}
+                        title="Managed in code no admin fields yet"
+                        aria-label={`${page.title} is managed in code no admin fields yet`}
                         className="inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground/30"
                       >
                         <PenLine className="h-4 w-4" />

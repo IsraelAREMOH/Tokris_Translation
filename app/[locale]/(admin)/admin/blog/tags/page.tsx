@@ -36,7 +36,7 @@ export default async function AdminBlogTagsPage({
           Tags
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Free-form labels for articles — more granular than categories, no
+          Free form labels for articles more granular than categories, no
           limit on how many you create.
         </p>
       </div>

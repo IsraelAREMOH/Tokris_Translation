@@ -27,11 +27,11 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Tokris Global Services — Professional Language Solutions",
+    default: "Tokris Global Services. Professional Language Solutions",
     template: "%s · Tokris Global Services",
   },
   description:
-    "Breaking language barriers, creating global opportunities — certified translation, sworn translation, interpretation, localization, transcription, and language training.",
+    "Breaking language barriers, creating global opportunities, certified translation, sworn translation, interpretation, localization, transcription, and language training.",
 };
 
 export const viewport: Viewport = {

@@ -6,7 +6,7 @@ export const DEFAULT_CONTACT_PHONES = [
   "+234 912 188 4999",
   "+234 912 614 5745",
 ];
-export const DEFAULT_CONTACT_EMAIL = "tokrisglobalservices@gmail.com";
+export const DEFAULT_CONTACT_EMAIL = "info@tokrisglobal.com";
 export const DEFAULT_OFFICE_ADDRESS =
   "Muri Busari Close, Adeniyi Jones, Ikeja, Lagos State, Nigeria";
 

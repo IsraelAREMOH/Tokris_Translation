@@ -55,7 +55,7 @@ export default async function AdminBlogAuthorsPage({
           Authors
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Bylines shown on published articles — photo, bio, position and
+          Bylines shown on published articles, photo, bio, position and
           social links.
         </p>
       </div>
@@ -65,7 +65,7 @@ export default async function AdminBlogAuthorsPage({
       {error ? (
         <div className="rounded-xl border border-danger/30 bg-danger/10 px-5 py-6">
           <p className="text-sm font-semibold text-danger">
-            The blog_authors table isn&apos;t available yet.
+            The blog authors table isn&apos;t available yet.
           </p>
           <p className="mt-2 text-sm text-danger/90">
             Run{" "}

@@ -70,8 +70,8 @@ export default async function AdminFilesPage({
           File Vault
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Every document across all projects, newest first — stored in the
-          private bucket and downloadable via one-hour signed links.
+          Every document across all projects, newest first stored in the
+          private bucket and downloadable via one hour signed links.
         </p>
       </div>
 
@@ -170,7 +170,7 @@ export default async function AdminFilesPage({
 
       {files.length === VAULT_PAGE_SIZE ? (
         <p className="text-xs text-muted-foreground">
-          Showing the {VAULT_PAGE_SIZE} most recent files — open a project for
+          Showing the {VAULT_PAGE_SIZE} most recent files open a project for
           its full document history.
         </p>
       ) : null}

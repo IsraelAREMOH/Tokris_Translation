@@ -55,7 +55,7 @@ export default async function AdminClientsPage() {
       {clients.length === 0 ? (
         <div className="rounded-xl border border-dashed border-border bg-surface px-6 py-10 shadow-elevated">
           <p className="text-sm text-muted-foreground">
-            No clients yet — accounts appear here as soon as someone registers.
+            No clients yet accounts appear here as soon as someone registers.
           </p>
         </div>
       ) : (

@@ -50,7 +50,7 @@ export default async function AdminQuotesPage() {
       {quotes.length === 0 ? (
         <div className="rounded-xl border border-dashed border-border bg-surface px-6 py-10 shadow-elevated">
           <p className="text-sm text-muted-foreground">
-            The quote queue is clear — every request has been reviewed.
+            The quote queue is clear, every request has been reviewed.
           </p>
         </div>
       ) : (

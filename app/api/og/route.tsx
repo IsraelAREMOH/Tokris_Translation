@@ -61,7 +61,7 @@ export async function GET(request: NextRequest) {
         </div>
 
         <div style={{ display: "flex", fontSize: 20, color: "#8acfc4" }}>
-          Tokris Global Services — Professional Language Solutions
+          Tokris Global Services. Professional Language Solutions
         </div>
       </div>
     ),

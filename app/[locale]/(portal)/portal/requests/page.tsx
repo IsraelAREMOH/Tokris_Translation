@@ -37,17 +37,17 @@ export default async function PortalRequestsPage() {
           My Requests Timeline
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Every quote request and its progress — from submission to secure
+          Every quote request and its progress from submission to secure
           delivery.
         </p>
       </div>
 
       {error ? (
-        <LoadErrorBanner message="Couldn't load your requests right now — please refresh the page." />
+        <LoadErrorBanner message="Couldn't load your requests right now, please refresh the page." />
       ) : projects.length === 0 ? (
         <div className="flex flex-col items-start gap-4 rounded-xl border border-dashed border-border bg-surface px-6 py-10 shadow-elevated">
           <p className="text-sm text-muted-foreground">
-            No requests yet — upload your documents and receive a free quote
+            No requests yet, upload your documents and receive a free quote
             from our specialists.
           </p>
           <Link

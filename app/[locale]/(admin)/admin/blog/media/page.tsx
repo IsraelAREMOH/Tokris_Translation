@@ -61,7 +61,7 @@ export default async function AdminMediaLibraryPage({
           Media Library
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          The site-wide asset repository — used by the blog today, and
+          The site-wide asset repository used by the blog today, and
           reusable by every future page editor (Homepage, Services, Team) as
           they come online.
         </p>

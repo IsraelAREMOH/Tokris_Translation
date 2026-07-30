@@ -36,7 +36,7 @@ const ONBOARDING_STEPS = [
   {
     title: "Submit your documents",
     description:
-      "Upload your files with a quote request — legal, immigration, academic, medical, financial or business documents.",
+      "Upload your files with a quote request, legal, immigration, academic, medical, financial or business documents.",
   },
   {
     title: "Receive a free quote",
@@ -51,7 +51,7 @@ const ONBOARDING_STEPS = [
   {
     title: "Secure delivery",
     description:
-      "Download your completed documents from this portal — securely and on time.",
+      "Download your completed documents from this portal securely and on time.",
   },
 ];
 
@@ -136,7 +136,7 @@ export default async function PortalDashboardPage() {
     process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ||
     "";
   const contactEmail =
-    siteContent.contact_email || "tokrisglobalservices@gmail.com";
+    siteContent.contact_email || "info@tokrisglobal.com";
   const contactPhone = siteContent.contact_phone || "+234 912 188 4999";
 
   return (
@@ -144,11 +144,11 @@ export default async function PortalDashboardPage() {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 className="font-display text-2xl font-semibold tracking-[-0.02em] text-foreground sm:text-3xl">
-            {firstName ? `Welcome back, ${firstName}` : "Welcome back"}
+            {firstName ? `Welcome, ${firstName}` : "Welcome back"}
           </h1>
           <p className="mt-2 max-w-xl text-sm text-muted-foreground">
             Track your translation requests, message the TGS team and download
-            completed documents — all in one place.
+            completed documents all in one place.
           </p>
         </div>
         <Link
@@ -251,7 +251,7 @@ export default async function PortalDashboardPage() {
               </h2>
               {messages.length === 0 ? (
                 <p className="mt-3 text-sm text-muted-foreground">
-                  No messages yet — open a request to start a conversation with
+                  No messages yet, open a request to start a conversation with
                   the TGS team.
                 </p>
               ) : (
@@ -299,7 +299,7 @@ export default async function PortalDashboardPage() {
         </h2>
         <p className="mt-2 max-w-prose text-sm leading-[1.7] text-muted-foreground">
           Certified translation, sworn translation, interpretation,
-          localization, transcription or language training — our team is one
+          localization, transcription or language training, our team is one
           message away, with strict confidentiality on every project.
         </p>
         <div className="mt-4 flex flex-wrap items-center gap-3">

@@ -45,7 +45,7 @@ export default async function AdminPostPreviewPage({
   return (
     <div className="min-h-dvh bg-background">
       <div className="sticky top-0 z-10 flex flex-wrap items-center justify-between gap-3 border-b border-accent-700/20 bg-accent-100 px-4 py-2.5 text-sm font-medium text-accent-800 dark:bg-accent-500/15 dark:text-accent-200">
-        <span>Preview mode — this is not publicly visible.</span>
+        <span>Preview mode, this is not publicly visible.</span>
         <Link
           href={`/admin/blog/posts/${id}`}
           className="shrink-0 rounded-full border border-accent-700/30 px-3 py-1 text-xs font-semibold transition-colors hover:bg-accent-200/50 dark:border-accent-300/30 dark:hover:bg-accent-500/20"

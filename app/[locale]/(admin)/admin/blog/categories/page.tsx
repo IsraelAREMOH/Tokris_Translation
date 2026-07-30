@@ -38,7 +38,7 @@ export default async function AdminBlogCategoriesPage({
           Categories
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Group articles by topic — Translation, Case Studies, Industry
+          Group articles by topic, Translation, Case Studies, Industry
           Insights and so on. The order below controls the filter order shown
           on the public blog.
         </p>

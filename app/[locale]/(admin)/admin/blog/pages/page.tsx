@@ -18,8 +18,8 @@ export default async function AdminPagesPage() {
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
           Every public page on the site, and how it&apos;s currently edited. Most pages&apos; copy still
-          lives in code — Contact&apos;s details are editable now via Site Content, and this registry
-          is the foundation a future rich-text page editor plugs into.
+          lives in code  Contact&apos;s details are editable now via Site Content, and this registry
+          is the foundation a future rich text page editor plugs into.
         </p>
       </div>
 
@@ -39,7 +39,7 @@ export default async function AdminPagesPage() {
           <PagesTable pages={pages} />
           <p className="text-xs text-muted-foreground">
             Future content types (Case Studies, Resources, FAQs, Events) register themselves in
-            this same table — no dashboard redesign needed when they arrive.
+            this same table, no dashboard redesign needed when they arrive.
           </p>
         </>
       )}

@@ -109,7 +109,7 @@ export default async function AdminDashboardPage() {
           Master Dashboard
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          The TGS operation at a glance — project pipeline, latest requests and
+          The TGS operation at a glance, project pipeline, latest requests and
           the most recent client messages.
         </p>
       </div>
@@ -166,7 +166,7 @@ export default async function AdminDashboardPage() {
           </h2>
           {recentProjects.length === 0 ? (
             <p className="mt-3 text-sm text-muted-foreground">
-              No requests yet — new submissions land here.
+              No requests yet. New submissions land here.
             </p>
           ) : (
             <ul className="mt-3 flex flex-col gap-1.5">
@@ -200,7 +200,7 @@ export default async function AdminDashboardPage() {
         </h2>
         {messages.length === 0 ? (
           <p className="mt-3 text-sm text-muted-foreground">
-            No messages yet — project conversations show up here.
+            No messages yet. Project conversations show up here.
           </p>
         ) : (
           <ul className="mt-3 flex flex-col gap-1.5">

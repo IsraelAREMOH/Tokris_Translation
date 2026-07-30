@@ -28,7 +28,7 @@ export default async function AdminContentPage() {
           Site Content
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Site-wide details shown on the public website — edit here, no code
+          Site wide details shown on the public website edit here, no code
           changes needed. Leaving the WhatsApp number empty falls back to the
           configured environment default.
         </p>
@@ -37,7 +37,7 @@ export default async function AdminContentPage() {
       {error ? (
         <div className="rounded-xl border border-danger/30 bg-danger/10 px-5 py-6">
           <p className="text-sm font-semibold text-danger">
-            The site_content table isn&apos;t available yet.
+            The site content table isn&apos;t available yet.
           </p>
           <p className="mt-2 text-sm text-danger/90">
             Run{" "}

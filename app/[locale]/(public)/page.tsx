@@ -24,10 +24,14 @@ import { Link } from "@/i18n/navigation";
 const HERO_IMAGE =
   "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1200&auto=format&fit=crop";
 
+// "Why Clients Choose Us" band — the wax-seal asset used for Apostille &
+// Legalization Support, doubling as a trust/credibility backdrop here.
+const WHY_CHOOSE_US_IMAGE = "/images/services/apostille-legalization.jpg";
+
 // One image per service, in sv1–sv7 order.
 const SERVICE_IMAGES = [
   "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1200&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1200&auto=format&fit=crop",
+  "/images/services/apostille-legalization.jpg",
   "https://images.unsplash.com/photo-1589578527966-fdac0f44566c?q=80&w=1200&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=1200&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1200&auto=format&fit=crop",
@@ -194,19 +198,43 @@ export default async function HomePage({
         </Reveal>
       </section>
 
-      {/* ---- Features grid ---- */}
-      <section className="border-y border-border/70 bg-surface/60">
+      {/* ---- Features grid: full-bleed photo band ---- */}
+      <section className="relative isolate overflow-hidden">
+        <Image
+          src={WHY_CHOOSE_US_IMAGE}
+          alt=""
+          fill
+          sizes="100vw"
+          className="-z-30 object-cover object-[65%_60%]"
+        />
+        {/* Brand-tinted color treatment, then a top/bottom vignette so the
+            heading and cards stay legible while the seal still reads through
+            the mid-band — same recipe as the hero photo and CtaBand below. */}
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-20 bg-brand-900/55 mix-blend-multiply dark:bg-brand-950/70"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-20 bg-gradient-to-b from-black/80 via-black/55 to-black/80"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 bg-[radial-gradient(40rem_24rem_at_88%_-10%,rgb(87_178_165/0.3),transparent_65%),radial-gradient(32rem_20rem_at_2%_115%,rgb(208_145_62/0.24),transparent_62%)]"
+        />
+        <div aria-hidden className="bg-noise absolute inset-0 -z-10 opacity-[0.08]" />
+
         <div className="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
           <Reveal className="grid gap-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start lg:gap-14">
             <div>
-              <p className="text-xs font-semibold tracking-[0.22em] uppercase text-brand-600 dark:text-brand-400">
+              <p className="text-xs font-semibold tracking-[0.22em] uppercase text-brand-300">
                 {t("features.eyebrow")}
               </p>
-              <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-0.03em] text-foreground sm:text-4xl">
+              <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-0.03em] text-white sm:text-4xl">
                 {t("features.title")}
               </h2>
             </div>
-            <p className="text-base text-muted-foreground lg:pt-9">
+            <p className="text-base text-white/75 lg:pt-9">
               {t("features.subtitle")}
             </p>
           </Reveal>
@@ -215,15 +243,15 @@ export default async function HomePage({
             {features.map((feature) => (
               <li
                 key={feature.title}
-                className="group rounded-2xl border border-border/60 bg-surface/40 p-6 shadow-elevated backdrop-blur-md transition-transform duration-300 ease-spring hover:-translate-y-1"
+                className="group rounded-2xl border border-white/15 bg-white/8 p-6 shadow-floating backdrop-blur-md transition-transform duration-300 ease-spring hover:-translate-y-1 hover:bg-white/12"
               >
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-600/10 text-brand-700 transition-transform duration-300 ease-spring group-hover:scale-110 dark:bg-brand-400/10 dark:text-brand-300">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-brand-200 transition-transform duration-300 ease-spring group-hover:scale-110">
                   <feature.icon className="h-5 w-5" />
                 </span>
-                <h3 className="mt-4 font-display text-lg font-semibold tracking-[-0.01em] text-foreground">
+                <h3 className="mt-4 font-display text-lg font-semibold tracking-[-0.01em] text-white">
                   {feature.title}
                 </h3>
-                <p className="mt-2 text-sm text-muted-foreground">
+                <p className="mt-2 text-sm text-white/70">
                   {feature.body}
                 </p>
               </li>

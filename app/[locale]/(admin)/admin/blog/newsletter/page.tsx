@@ -35,7 +35,7 @@ export default async function AdminNewsletterPage({
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
           Subscribers captured from the blog&apos;s signup widget. Sending campaigns isn&apos;t part of
-          this build — reach out to your list manually using the export below.
+          this build reach out to your list manually using the export below.
         </p>
       </div>
 

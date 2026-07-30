@@ -26,7 +26,7 @@ export default async function AdminBlogDashboardPage() {
           Content Dashboard
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          The whole website&apos;s content, at a glance — the blog is one module here, alongside
+          The whole website&apos;s content, at a glance the blog is one module here, alongside
           pages, media and the newsletter.
         </p>
       </div>

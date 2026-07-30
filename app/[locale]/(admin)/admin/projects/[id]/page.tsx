@@ -160,7 +160,7 @@ export default async function AdminProjectDetailPage({
             </h2>
             {messages.length === 0 ? (
               <p className="mt-3 text-sm text-muted-foreground">
-                No messages yet — post the first update below.
+                No messages yet, post the first update below.
               </p>
             ) : (
               <ul className="mt-4 flex flex-col gap-3">

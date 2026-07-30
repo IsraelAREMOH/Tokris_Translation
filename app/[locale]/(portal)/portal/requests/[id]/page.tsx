@@ -136,7 +136,7 @@ export default async function PortalRequestDetailPage({
         </h2>
         <p className="mt-1.5 text-xs text-muted-foreground">
           Your project is reviewed, translated, edited and verified by
-          experienced linguists before secure delivery — this timeline updates
+          experienced linguists before secure delivery, this timeline updates
           live as it moves through each stage.
         </p>
         <div className="mt-4">
@@ -145,7 +145,7 @@ export default async function PortalRequestDetailPage({
       </section>
 
       {filesError ? (
-        <LoadErrorBanner message="Couldn't load your files right now — please refresh the page." />
+        <LoadErrorBanner message="Couldn't load your files right now, please refresh the page." />
       ) : (
         <>
           <section className="rounded-xl border border-border bg-surface p-5 shadow-elevated">
@@ -189,11 +189,11 @@ export default async function PortalRequestDetailPage({
         </h2>
         {messagesError ? (
           <div className="mt-3">
-            <LoadErrorBanner message="Couldn't load your messages right now — please refresh the page." />
+            <LoadErrorBanner message="Couldn't load your messages right now, please refresh the page." />
           </div>
         ) : messages.length === 0 ? (
           <p className="mt-3 text-sm text-muted-foreground">
-            No messages yet — questions about your request? Send one below.
+            No messages yet, questions about your request? Send one below.
           </p>
         ) : (
           <ul className="mt-4 flex flex-col gap-3">

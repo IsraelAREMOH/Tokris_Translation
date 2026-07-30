@@ -20,7 +20,7 @@ export default async function AdminBlogSeoPage() {
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
           Derived from your {audit.postsAudited} non-archived post{audit.postsAudited === 1 ? "" : "s"}
-          {" "}— nothing here is estimated. Static pages (Home, Services, About) set their own SEO
+          {" "} nothing here is estimated. Static pages (Home, Services, About) set their own SEO
           fields in code, so they aren&apos;t audited below.
         </p>
       </div>
@@ -67,7 +67,7 @@ export default async function AdminBlogSeoPage() {
           </span>
         </div>
         <p className="mt-2 text-xs text-muted-foreground">
-          Placeholder architecture only — a link crawler isn&apos;t built yet. When it is, results
+          Placeholder architecture only  a link crawler isn&apos;t built yet. When it is, results
           report into this same panel.
         </p>
       </div>
@@ -78,7 +78,7 @@ export default async function AdminBlogSeoPage() {
           <p className="mt-1 text-xs text-muted-foreground">
             {stats.publishedPosts} published post{stats.publishedPosts === 1 ? "" : "s"},{" "}
             {stats.categories} categor{stats.categories === 1 ? "y" : "ies"}, {stats.tags} tag
-            {stats.tags === 1 ? "" : "s"} — split across 4 files, since Next.js doesn&apos;t generate a
+            {stats.tags === 1 ? "" : "s"} split across 4 files, since Next.js doesn&apos;t generate a
             combined index for split sitemaps.
           </p>
           <ul className="mt-3 flex flex-col gap-1">
@@ -100,7 +100,7 @@ export default async function AdminBlogSeoPage() {
         <div className="rounded-xl border border-border bg-surface p-5 shadow-elevated">
           <h3 className="text-sm font-semibold text-foreground">Robots status</h3>
           <p className="mt-1 text-xs text-muted-foreground">
-            Read live from <code className="font-mono">app/robots.ts</code> — always accurate, never
+            Read live from <code className="font-mono">app/robots.ts</code>  always accurate, never
             drifts from what&apos;s actually served.
           </p>
           <ul className="mt-3 flex flex-col gap-2">

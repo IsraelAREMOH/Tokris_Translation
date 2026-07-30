@@ -56,7 +56,7 @@ export default async function AdminBlogAnalyticsPage() {
           Analytics
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Built from your own data — post views, publishing history and subscriber signups. Every
+          Built from your own data, post views, publishing history and subscriber signups. Every
           chart below fills in on its own as the data accumulates; none of it is estimated.
         </p>
       </div>
@@ -66,7 +66,7 @@ export default async function AdminBlogAnalyticsPage() {
           <AreaChart
             data={viewsOverTime}
             valueLabel="Views"
-            emptyMessage="No views recorded yet — this fills in as visitors read your posts."
+            emptyMessage="No views recorded yet, this fills in as visitors read your posts."
           />
         </ChartCard>
 
@@ -74,7 +74,7 @@ export default async function AdminBlogAnalyticsPage() {
           <AreaChart
             data={newsletterGrowth}
             valueLabel="Subscribers"
-            emptyMessage="No subscribers yet — this fills in once your first visitor signs up."
+            emptyMessage="No subscribers yet, this fills in once your first visitor signs up."
           />
         </ChartCard>
 
@@ -113,7 +113,7 @@ export default async function AdminBlogAnalyticsPage() {
 
       <ChartCard
         title="Traffic by month"
-        description="Site-wide traffic (not just the blog) — future-ready, once an analytics provider is connected."
+        description="Site-wide traffic (not just the blog) future ready, once an analytics provider is connected."
       >
         <ChartEmptyState message="Connect Google Analytics, Plausible, or PostHog (see .env.example / components/analytics/analytics-scripts.tsx) to see site-wide traffic here — this app doesn't fabricate numbers it can't measure." />
       </ChartCard>

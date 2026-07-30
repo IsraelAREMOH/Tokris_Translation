@@ -38,7 +38,7 @@ export function CompletedUploadForm({ projectId }: { projectId: string }) {
       ) : null}
       {state.uploadedAt && !state.error ? (
         <p role="status" className="text-xs font-medium text-brand-700 dark:text-brand-300">
-          Uploaded — the files are now available in the client&apos;s portal.
+          Uploaded. The files are now available in the client&apos;s portal.
         </p>
       ) : null}
 
