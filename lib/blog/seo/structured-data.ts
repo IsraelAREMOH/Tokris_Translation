@@ -1,3 +1,4 @@
+import { SOCIAL_LINKS } from "@/lib/social/links";
 import type { BlogPost } from "@/lib/blog/types";
 
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
@@ -14,6 +15,8 @@ export function buildOrganizationSchema() {
     alternateName: ORG_SHORT_NAME,
     url: SITE_URL,
     logo: `${SITE_URL}/api/og`,
+    // Feeds Google's Knowledge Panel / entity graph with the official profiles.
+    sameAs: SOCIAL_LINKS.map((link) => link.href),
   };
 }
 

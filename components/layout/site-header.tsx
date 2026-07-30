@@ -11,9 +11,9 @@ export async function SiteHeader() {
 
   const items = [
     { href: "/", label: t("home") },
+    { href: "/about", label: t("about") },
     { href: "/services", label: t("services") },
     { href: "/blog", label: t("blog") },
-    { href: "/about", label: t("about") },
     { href: "/contact", label: t("contact") },
   ];
 

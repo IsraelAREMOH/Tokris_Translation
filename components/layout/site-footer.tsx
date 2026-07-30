@@ -1,6 +1,7 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
+import { SocialLinks } from "@/components/social/social-links";
 import { Link } from "@/i18n/navigation";
 import { getContactDetails, mapsHref, telHref } from "@/lib/contact/details";
 
@@ -26,6 +27,7 @@ export async function SiteFooter() {
             <span className="text-brand-600 dark:text-brand-400">.</span>
           </p>
           <p className="mt-3 text-sm text-muted-foreground">{t("tagline")}</p>
+          <SocialLinks label={t("followLabel")} className="mt-5 -ml-2" />
         </div>
         <nav
           aria-label="Footer"

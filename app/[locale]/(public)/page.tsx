@@ -362,7 +362,7 @@ export default async function HomePage({
 
       <ClientReviews />
 
-      <CtaBand />
+      <CtaBand showSocial />
     </>
   );
 }

@@ -1,11 +1,16 @@
 import { ArrowRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
+import { SocialLinks } from "@/components/social/social-links";
 import { Reveal } from "@/components/ui/reveal";
 import { Link } from "@/i18n/navigation";
 
-/** High-impact closing CTA panel shared across the public pages. */
-export async function CtaBand() {
+/**
+ * High-impact closing CTA panel shared across the public pages. `showSocial`
+ * is opt-in — the footer already carries the social row on every page, so
+ * only the homepage (its primary conversion moment) also surfaces it here.
+ */
+export async function CtaBand({ showSocial = false }: { showSocial?: boolean }) {
   const t = await getTranslations("cta");
 
   return (
@@ -32,6 +37,15 @@ export async function CtaBand() {
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
+
+        {showSocial ? (
+          <div className="mt-8 flex flex-col items-center gap-3">
+            <p className="text-xs font-semibold tracking-[0.18em] text-brand-100/80 uppercase">
+              {t("followLabel")}
+            </p>
+            <SocialLinks label={t("followLabel")} variant="inverted" />
+          </div>
+        ) : null}
       </Reveal>
     </section>
   );

@@ -13,6 +13,7 @@ import { ContactForm } from "@/components/contact/contact-form";
 import { ClientReviews } from "@/components/public/client-reviews";
 import { ContactHero } from "@/components/public/contact-hero";
 import { CtaBand } from "@/components/public/cta-band";
+import { SocialLinks } from "@/components/social/social-links";
 import { Reveal } from "@/components/ui/reveal";
 import { getContactDetails, getWhatsAppHref, mapsHref, telHref } from "@/lib/contact/details";
 
@@ -123,6 +124,22 @@ export default async function ContactPage({
                   </li>
                 ))}
               </ul>
+            </div>
+
+            {/* Prominent, standalone from the quick-reference list above —
+                this is an invitation to connect, not another data point. */}
+            <div className="rounded-2xl border border-border/60 bg-surface/40 p-5 shadow-elevated backdrop-blur-md">
+              <p className="text-sm font-semibold text-foreground">
+                {t("socialTitle")}
+              </p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                {t("socialBody")}
+              </p>
+              <SocialLinks
+                label={t("socialTitle")}
+                variant="prominent"
+                className="mt-4"
+              />
             </div>
           </div>
 

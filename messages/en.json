@@ -13,6 +13,7 @@
   },
   "footer": {
     "tagline": "Breaking Language Barriers. Creating Global Opportunities.",
+    "followLabel": "Follow us on social media",
     "legal": "© {year} Tokris Global Services Limited. All rights reserved."
   },
   "themeToggle": {
@@ -36,7 +37,8 @@
   "cta": {
     "title": "Ready to Go Global?",
     "body": "Let Language Never Be Your Barrier to Success. Partner with Tokris Global Services Limited for professional translation, sworn translation, certified translation, interpretation, localization, transcription, language training, and multilingual business support.",
-    "button": "Get Your Quote Today"
+    "button": "Get Your Quote Today",
+    "followLabel": "Follow us"
   },
   "home": {
     "eyebrow": "Tokris Global Services Limited",
@@ -394,6 +396,8 @@
     "whatsappTitle": "WhatsApp",
     "whatsappBody": "Message us for quick questions and quote requests.",
     "whatsappCta": "Start a chat",
+    "socialTitle": "Connect with us",
+    "socialBody": "Follow Tokris Global Services for language tips, client stories, and updates.",
     "form": {
       "title": "Send us a message",
       "subtitle": "Tell us about your project and we'll reply with a personal response.",
@@ -504,7 +508,8 @@
       "emailLabel": "Email address",
       "placeholder": "you@email.com",
       "submit": "Subscribe",
-      "success": "You're subscribed thank you!"
+      "success": "You're subscribed thank you!",
+      "followLabel": "Follow us"
     },
     "homepage": {
       "eyebrow": "From the Blog",

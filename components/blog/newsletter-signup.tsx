@@ -2,6 +2,7 @@
 
 import { useActionState } from "react";
 
+import { SocialLinks } from "@/components/social/social-links";
 import { subscribeToNewsletter, type NewsletterActionState } from "@/lib/blog/newsletter/actions";
 
 const initialState: NewsletterActionState = {};
@@ -16,6 +17,7 @@ export function NewsletterSignup({
   placeholder,
   submitLabel,
   successMessage,
+  followLabel,
   className = "",
 }: {
   source: string;
@@ -25,6 +27,7 @@ export function NewsletterSignup({
   placeholder: string;
   submitLabel: string;
   successMessage: string;
+  followLabel: string;
   className?: string;
 }) {
   const [state, formAction, pending] = useActionState(subscribeToNewsletter, initialState);
@@ -70,6 +73,11 @@ export function NewsletterSignup({
           {state.error}
         </p>
       ) : null}
+
+      <div className="mt-5 flex items-center gap-3 border-t border-border/60 pt-5">
+        <p className="text-xs font-medium text-muted-foreground">{followLabel}</p>
+        <SocialLinks label={followLabel} variant="subtle" />
+      </div>
     </div>
   );
 }

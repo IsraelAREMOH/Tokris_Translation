@@ -206,6 +206,7 @@ async function NewsletterSignupSection() {
       placeholder={t("placeholder")}
       submitLabel={t("submit")}
       successMessage={t("success")}
+      followLabel={t("followLabel")}
     />
   );
 }
