@@ -40,9 +40,17 @@ yarn-error.log*
 dev-insecure.ps1
 
 # internal project instructions + raw source content — kept locally, not in
-# the public repo
+# the public repo. Image assets are the exception: they're tracked so they
+# can be referenced/deployed from the repo, everything else (docs, etc.)
+# stays ignored.
 /CLAUDE.md
-/Assets/
+/Assets/*
+!/Assets/*.jpg
+!/Assets/*.jpeg
+!/Assets/*.png
+!/Assets/*.webp
+!/Assets/*.gif
+!/Assets/*.svg
 
 # typescript
 *.tsbuildinfo
