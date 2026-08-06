@@ -21,7 +21,12 @@ function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function postToResend(apiKey: string, inbox: string, payload: { subject: string; text: string; replyTo?: string }) {
+async function postToResend(
+  apiKey: string,
+  from: string,
+  inbox: string,
+  payload: { subject: string; text: string; replyTo?: string },
+) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
@@ -33,7 +38,7 @@ async function postToResend(apiKey: string, inbox: string, payload: { subject: s
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: process.env.CONTACT_FROM_EMAIL || "TGS Website <onboarding@resend.dev>",
+        from,
         to: [inbox],
         ...(payload.replyTo ? { reply_to: payload.replyTo } : {}),
         subject: payload.subject,
@@ -51,7 +56,10 @@ async function postToResend(apiKey: string, inbox: string, payload: { subject: s
  * API. Shared by the contact form and quote request flows so both stay in
  * sync on the same from/to/auth handling instead of duplicating it. Uses
  * fetch directly (no SDK dependency); treats the .env.example placeholder
- * RESEND_API_KEY as unconfigured.
+ * RESEND_API_KEY as unconfigured. CONTACT_FROM_EMAIL is required — there is
+ * deliberately no fallback to Resend's shared onboarding@resend.dev sandbox
+ * sender, since that domain isn't verified for this project and mail sent
+ * from it is far more likely to be filtered or rejected outright.
  *
  * Retries once (2 attempts total) on network errors, timeouts, 429s, and
  * 5xx responses — those are transient by nature (a hung connection, a
@@ -74,6 +82,11 @@ export async function sendOperatorEmail({
     console.error("sendOperatorEmail: RESEND_API_KEY is not configured.");
     return { ok: false, error: "not_configured" };
   }
+  const from = process.env.CONTACT_FROM_EMAIL;
+  if (!from) {
+    console.error("sendOperatorEmail: CONTACT_FROM_EMAIL is not configured.");
+    return { ok: false, error: "not_configured" };
+  }
 
   const { email: inbox } = await getContactDetails();
 
@@ -83,7 +96,7 @@ export async function sendOperatorEmail({
   for (let attempt = 1; attempt <= attempts; attempt += 1) {
     let response: Response;
     try {
-      response = await postToResend(apiKey, inbox, { subject, text, replyTo });
+      response = await postToResend(apiKey, from, inbox, { subject, text, replyTo });
     } catch (fetchError) {
       const isTimeout = fetchError instanceof Error && fetchError.name === "AbortError";
       console.error(
