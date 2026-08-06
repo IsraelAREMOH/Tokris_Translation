@@ -9,7 +9,7 @@ import {
   MAX_PHONE_LENGTH,
   MIN_SUBMIT_MS,
 } from "@/lib/contact/constants";
-import { getContactDetails } from "@/lib/contact/details";
+import { sendOperatorEmail } from "@/lib/email/send";
 import { MAX_MESSAGE_LENGTH } from "@/lib/validation";
 
 export type ContactFormState = {
@@ -32,9 +32,8 @@ function toSingleLine(value: FormDataEntryValue | null, maxLength: number) {
 }
 
 /**
- * Sends a public contact enquiry to the operator's inbox via the Resend API.
- * Uses fetch directly so no SDK dependency is needed; requires RESEND_API_KEY
- * (the .env.example placeholder value is treated as unconfigured).
+ * Sends a public contact enquiry to the operator's inbox via Resend
+ * (lib/email/send.ts).
  */
 export async function sendContactMessage(
   _prev: ContactFormState,
@@ -43,14 +42,16 @@ export async function sendContactMessage(
   const t = await getTranslations("contact.form");
 
   // Bot filters run first. The honeypot reports fake success so scripts don't
-  // learn they were filtered; the timing check returns a retryable error so a
-  // fast human (e.g. browser autofill) just submits again and passes.
+  // learn they were filtered; the timing check returns its own distinct
+  // "tooFast" error (not the send-failure message below) so a fast human
+  // (e.g. browser autofill, or resubmitting right after a first try) isn't
+  // told the contact channel is broken — they just need to wait a moment.
   if (String(formData.get(HONEYPOT_FIELD) ?? "") !== "") {
     return { success: true };
   }
   const startedAt = Number(formData.get("startedAt"));
   if (!Number.isFinite(startedAt) || Date.now() - startedAt < MIN_SUBMIT_MS) {
-    return { error: t("errors.sendFailed") };
+    return { error: t("errors.tooFast") };
   }
 
   const name = toSingleLine(formData.get("name"), MAX_NAME_LENGTH);
@@ -68,51 +69,13 @@ export async function sendContactMessage(
     return { error: t("errors.messageTooLong", { max: MAX_MESSAGE_LENGTH }) };
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey || apiKey.startsWith("your_")) {
-    console.error("Contact form: RESEND_API_KEY is not configured.");
-    return { error: t("errors.sendFailed") };
-  }
+  const result = await sendOperatorEmail({
+    subject: `New website enquiry from ${name}`,
+    text: [`Name: ${name}`, `Email: ${email}`, `Phone: ${phone || "—"}`, "", message].join("\n"),
+    replyTo: email,
+  });
 
-  const { email: inbox } = await getContactDetails();
-
-  // A network/DNS/timeout failure throws rather than resolving with a
-  // non-ok response, so this needs its own try/catch — otherwise it escapes
-  // the Server Action uncaught and the visitor sees a generic crash page
-  // instead of the friendly errors.sendFailed message below.
-  let response: Response;
-  try {
-    response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: process.env.CONTACT_FROM_EMAIL || "TGS Website <onboarding@resend.dev>",
-        to: [inbox],
-        reply_to: email,
-        subject: `New website enquiry from ${name}`,
-        text: [
-          `Name: ${name}`,
-          `Email: ${email}`,
-          `Phone: ${phone || "—"}`,
-          "",
-          message,
-        ].join("\n"),
-      }),
-    });
-  } catch (fetchError) {
-    console.error("Contact form: Resend request threw:", fetchError);
-    return { error: t("errors.sendFailed") };
-  }
-
-  if (!response.ok) {
-    console.error(
-      "Contact form: Resend request failed:",
-      response.status,
-      await response.text(),
-    );
+  if (!result.ok) {
     return { error: t("errors.sendFailed") };
   }
 

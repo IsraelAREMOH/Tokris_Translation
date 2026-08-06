@@ -2,6 +2,7 @@
 
 import { getTranslations } from "next-intl/server";
 
+import { sendOperatorEmail } from "@/lib/email/send";
 import { LANGUAGES } from "@/lib/languages";
 import {
   MAX_FILES,
@@ -156,6 +157,27 @@ export async function submitQuoteRequest(
     console.error("Quote request: file records failed:", filesError.message);
     await rollback();
     return { error: t("generic") };
+  }
+
+  // Best-effort — the request itself is already saved at this point (visible
+  // in Admin -> Quote Tracker regardless), so a notification failure isn't
+  // reported back to the client as an error.
+  const emailResult = await sendOperatorEmail({
+    subject: `New quote request: ${sourceLanguage} → ${targetLanguage}`,
+    text: [
+      `Client: ${(user.user_metadata?.full_name as string | undefined) || user.email || "Unknown"}`,
+      `Email: ${user.email ?? "—"}`,
+      `Source language: ${sourceLanguage}`,
+      `Target language: ${targetLanguage}`,
+      `Deadline: ${deadline}`,
+      `Files: ${files.length}`,
+      "",
+      instructions || "(no additional instructions)",
+    ].join("\n"),
+    replyTo: user.email,
+  });
+  if (!emailResult.ok) {
+    console.error("Quote request: operator notification email failed:", emailResult.error);
   }
 
   return { success: true };

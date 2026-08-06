@@ -414,7 +414,8 @@
         "missingFields": "Please fill in your name, email, and message.",
         "invalidEmail": "Please enter a valid email address.",
         "messageTooLong": "Your message is too long, please keep it under {max} characters.",
-        "sendFailed": "We couldn't send your message right now. Please email us directly or reach us on WhatsApp."
+        "sendFailed": "We couldn't send your message right now. Please email us directly or reach us on WhatsApp.",
+        "tooFast": "That was quick! Please wait a moment and try again."
       }
     },
     "faq": {
