@@ -107,32 +107,14 @@ export async function sendContactMessage(
     return { error: t("errors.sendFailed") };
   }
 
-  const responseText = await response.text();
-
   if (!response.ok) {
-    console.error("Contact form: Resend request failed:", response.status, responseText);
+    console.error(
+      "Contact form: Resend request failed:",
+      response.status,
+      await response.text(),
+    );
     return { error: t("errors.sendFailed") };
   }
-
-  // TEMPORARY — diagnostic logging for the info@tokrisglobal.com delivery
-  // investigation (2026-08-06). Remove once inbound routing is confirmed
-  // fixed. A 2xx here only means Resend accepted the message for sending;
-  // it says nothing about whether the recipient's mail server ultimately
-  // stored it, so this is logged for cross-referencing against the Resend
-  // dashboard's per-message event timeline, not treated as proof of inbox
-  // delivery.
-  let resendId: string | undefined;
-  try {
-    resendId = JSON.parse(responseText)?.id;
-  } catch {
-    // Unexpected non-JSON 2xx body — leave resendId undefined, still log the raw text below.
-  }
-  console.log("Contact form: Resend accepted enquiry for delivery", {
-    to: inbox,
-    resendMessageId: resendId,
-    httpStatus: response.status,
-    rawResponse: responseText,
-  });
 
   return { success: true };
 }
