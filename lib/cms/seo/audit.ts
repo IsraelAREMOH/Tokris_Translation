@@ -1,6 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 
 import robots from "@/app/robots";
+import { SITE_URL } from "@/lib/site-url";
 
 export type SeoAuditPost = { id: string; title: string };
 
@@ -92,7 +93,6 @@ export async function getSeoAudit(supabase: SupabaseClient): Promise<SeoAudit> {
     .filter(([, matches]) => matches.length > 1)
     .map(([description, matchedPosts]) => ({ description, posts: matchedPosts }));
 
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
   const robotsConfig = robots();
 
   return {
@@ -105,7 +105,7 @@ export async function getSeoAudit(supabase: SupabaseClient): Promise<SeoAudit> {
       ? robotsConfig.sitemap
       : robotsConfig.sitemap
         ? [robotsConfig.sitemap]
-        : [`${siteUrl}/sitemap/pages.xml`],
+        : [`${SITE_URL}/sitemap/pages.xml`],
     robotsRules: (Array.isArray(robotsConfig.rules) ? robotsConfig.rules : [robotsConfig.rules]).map(
       (rule) => ({
         userAgent: Array.isArray(rule?.userAgent)

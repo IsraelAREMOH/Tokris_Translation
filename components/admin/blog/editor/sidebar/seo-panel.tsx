@@ -5,6 +5,7 @@ import Image from "next/image";
 
 import { MediaPickerDialog } from "@/components/admin/media/media-picker-dialog";
 import type { MediaAsset } from "@/lib/media/types";
+import { SITE_URL } from "@/lib/site-url";
 
 const SEO_TITLE_MAX = 70;
 const META_DESCRIPTION_MAX = 200;
@@ -36,7 +37,7 @@ export function SeoPanel({
 }) {
   const effectiveTitle = seoTitle || title || "Untitled post";
   const effectiveDescription = metaDescription || "No meta description set yet.";
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "yoursite.com").replace(/^https?:\/\//, "");
+  const siteUrl = SITE_URL.replace(/^https?:\/\//, "");
 
   return (
     <details className="group rounded-xl border border-border bg-surface p-5 shadow-elevated">

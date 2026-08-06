@@ -13,10 +13,9 @@ import {
   getRelatedPosts,
 } from "@/lib/blog/posts/queries";
 import { buildArticleSchema, buildBreadcrumbSchema } from "@/lib/blog/seo/structured-data";
+import { SITE_URL } from "@/lib/site-url";
 
 export const revalidate = 300;
-
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
 
 export async function generateMetadata({
   params,

@@ -4,8 +4,7 @@ import { getCategories } from "@/lib/blog/categories/queries";
 import { getPublishedPosts } from "@/lib/blog/posts/queries";
 import { getTags } from "@/lib/blog/tags/queries";
 import { routing } from "@/i18n/routing";
-
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
+import { SITE_URL } from "@/lib/site-url";
 
 // Static, always-public routes — deliberately excludes /login, /register,
 // /portal, /admin (and everything under them) and the /admin/preview route.

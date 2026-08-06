@@ -34,7 +34,17 @@ export function NewsletterSignup({
   const fieldId = `newsletter-email-${source}`;
 
   return (
-    <div className={`rounded-2xl border border-border bg-surface p-6 shadow-elevated sm:p-8 ${className}`}>
+    <div
+      className={`relative isolate overflow-hidden rounded-2xl border border-border bg-surface p-6 shadow-elevated sm:p-8 ${className}`}
+    >
+      <span
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-500 via-brand-400 to-accent-400"
+      />
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -top-16 -right-10 h-48 w-48 rounded-full bg-[radial-gradient(closest-side,rgb(56_152_139/0.16),transparent_70%)] blur-2xl" />
+        <div className="bg-noise absolute inset-0 opacity-[0.035]" />
+      </div>
       <h2 className="font-display text-xl font-semibold tracking-[-0.01em] text-foreground">
         {title}
       </h2>

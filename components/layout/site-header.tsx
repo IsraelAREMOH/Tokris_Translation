@@ -5,6 +5,7 @@ import { Link } from "@/i18n/navigation";
 
 import { MobileNav } from "./mobile-nav";
 import { PrimaryNav } from "./primary-nav";
+import { SiteLogo } from "./site-logo";
 
 export async function SiteHeader() {
   const t = await getTranslations("nav");
@@ -20,13 +21,7 @@ export async function SiteHeader() {
   return (
     <header className="fixed inset-x-0 top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur-md">
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
-        <Link
-          href="/"
-          className="font-display text-xl font-semibold tracking-[-0.02em] text-foreground transition-transform duration-200 ease-spring hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500 active:translate-y-0"
-        >
-          TOKRIS
-          <span className="text-brand-600 dark:text-brand-400">.</span>
-        </Link>
+        <SiteLogo variant="header" />
 
         <PrimaryNav items={items} />
 

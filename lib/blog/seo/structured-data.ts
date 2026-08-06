@@ -1,7 +1,7 @@
 import { SOCIAL_LINKS } from "@/lib/social/links";
 import type { BlogPost } from "@/lib/blog/types";
+import { SITE_URL } from "@/lib/site-url";
 
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
 const ORG_NAME = "Tokris Global Services Limited";
 const ORG_SHORT_NAME = "TGS";
 

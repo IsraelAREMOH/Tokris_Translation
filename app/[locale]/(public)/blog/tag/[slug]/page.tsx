@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
 import { ArchiveResultsSkeleton } from "@/components/blog/archive-results-skeleton";
+import { BlogBrandBackdrop } from "@/components/blog/blog-brand-backdrop";
+import { BlogEmptyState } from "@/components/blog/blog-empty-state";
 import { BlogSearchBar } from "@/components/blog/blog-search-bar";
 import { SearchSuggestions } from "@/components/blog/search-suggestions";
 import { Breadcrumbs } from "@/components/content/breadcrumbs";
@@ -55,28 +57,32 @@ export default async function BlogTagArchivePage({
   if (!tag) notFound();
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-      <JsonLd
-        data={buildBreadcrumbSchema([
-          { name: tNav("blog"), path: "/blog" },
-          { name: `#${tag.name}`, path: `/blog/tag/${tag.slug}` },
-        ])}
-      />
+    <div className="relative isolate overflow-hidden">
+      <BlogBrandBackdrop size="compact" />
 
-      <Breadcrumbs items={[{ label: tNav("blog"), href: "/blog" }, { label: `#${tag.name}` }]} />
+      <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <JsonLd
+          data={buildBreadcrumbSchema([
+            { name: tNav("blog"), path: "/blog" },
+            { name: `#${tag.name}`, path: `/blog/tag/${tag.slug}` },
+          ])}
+        />
 
-      <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div className="max-w-2xl">
-          <h1 className="font-display text-4xl font-semibold tracking-[-0.03em] text-foreground sm:text-5xl">
-            {tArchive("tagTitle", { name: tag.name })}
-          </h1>
+        <Breadcrumbs items={[{ label: tNav("blog"), href: "/blog" }, { label: `#${tag.name}` }]} />
+
+        <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div className="max-w-2xl">
+            <h1 className="font-display text-4xl font-semibold tracking-[-0.03em] text-foreground sm:text-5xl">
+              {tArchive("tagTitle", { name: tag.name })}
+            </h1>
+          </div>
+          <BlogSearchBar placeholder={tArchive("searchPlaceholder")} />
         </div>
-        <BlogSearchBar placeholder={tArchive("searchPlaceholder")} />
-      </div>
 
-      <Suspense key={`${q ?? ""}-${page ?? ""}`} fallback={<ArchiveResultsSkeleton />}>
-        <TagArchiveResults slug={slug} q={q} page={page} />
-      </Suspense>
+        <Suspense key={`${q ?? ""}-${page ?? ""}`} fallback={<ArchiveResultsSkeleton />}>
+          <TagArchiveResults slug={slug} q={q} page={page} />
+        </Suspense>
+      </div>
     </div>
   );
 }
@@ -100,13 +106,12 @@ async function TagArchiveResults({
   return (
     <>
       {posts.length === 0 ? (
-        <div className="mt-10 flex flex-col gap-4">
-          <p className="text-sm text-muted-foreground">
-            {q ? tArchive("noResults") : tArchive("empty")}
-          </p>
-          {suggestions ? (
-            <SearchSuggestions suggestions={suggestions} label={tArchive("suggestionsIntro")} />
-          ) : null}
+        <div className="mt-10">
+          <BlogEmptyState message={q ? tArchive("noResults") : tArchive("empty")}>
+            {suggestions ? (
+              <SearchSuggestions suggestions={suggestions} label={tArchive("suggestionsIntro")} />
+            ) : null}
+          </BlogEmptyState>
         </div>
       ) : (
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

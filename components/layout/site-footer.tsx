@@ -5,6 +5,8 @@ import { SocialLinks } from "@/components/social/social-links";
 import { Link } from "@/i18n/navigation";
 import { getContactDetails, mapsHref, telHref } from "@/lib/contact/details";
 
+import { SiteLogo } from "./site-logo";
+
 export async function SiteFooter() {
   const t = await getTranslations("footer");
   const nav = await getTranslations("nav");
@@ -22,10 +24,7 @@ export async function SiteFooter() {
     <footer className="border-t border-border bg-surface">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 py-14 sm:px-6 lg:flex-row lg:items-start lg:justify-between">
         <div className="max-w-sm">
-          <p className="font-display text-xl font-semibold tracking-[-0.02em] text-foreground">
-            TOKRIS
-            <span className="text-brand-600 dark:text-brand-400">.</span>
-          </p>
+          <SiteLogo variant="footer" />
           <p className="mt-3 text-sm text-muted-foreground">{t("tagline")}</p>
           <SocialLinks label={t("followLabel")} className="mt-5 -ml-2" />
         </div>

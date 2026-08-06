@@ -1,6 +1,6 @@
 import { getLatestPosts } from "@/lib/blog/posts/queries";
+import { SITE_URL } from "@/lib/site-url";
 
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
 export const FEED_POST_LIMIT = 20;
 
 export type FeedEntry = {

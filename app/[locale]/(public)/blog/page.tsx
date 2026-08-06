@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Suspense } from "react";
 
+import { BlogBrandBackdrop } from "@/components/blog/blog-brand-backdrop";
+import { BlogEmptyState } from "@/components/blog/blog-empty-state";
 import { BlogLandingSkeleton } from "@/components/blog/blog-landing-skeleton";
 import { BlogSearchBar } from "@/components/blog/blog-search-bar";
+import { BlogSectionDivider } from "@/components/blog/blog-section-divider";
 import { BrowseByCategory } from "@/components/blog/browse-by-category";
 import { BrowseByTag } from "@/components/blog/browse-by-tag";
 import { FeaturedHero } from "@/components/blog/featured-hero";
@@ -44,31 +47,35 @@ export default async function BlogLandingPage({
   const { q, page } = resolvedSearchParams;
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-      <JsonLd data={buildWebsiteSchema(locale)} />
+    <div className="relative isolate overflow-hidden">
+      <BlogBrandBackdrop size="hero" />
 
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div className="max-w-2xl">
-          <p className="text-xs font-semibold tracking-[0.22em] text-brand-600 uppercase dark:text-brand-400">
-            {t("eyebrow")}
-          </p>
-          <h1 className="mt-3 font-display text-4xl font-semibold tracking-[-0.03em] text-foreground sm:text-5xl">
-            {t("title")}
-          </h1>
-          <p className="mt-4 text-base text-muted-foreground">{t("subtitle")}</p>
+      <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <JsonLd data={buildWebsiteSchema(locale)} />
+
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div className="max-w-2xl">
+            <p className="text-xs font-semibold tracking-[0.22em] text-brand-600 uppercase dark:text-brand-400">
+              {t("eyebrow")}
+            </p>
+            <h1 className="mt-3 font-display text-4xl font-semibold tracking-[-0.03em] text-foreground sm:text-5xl">
+              {t("title")}
+            </h1>
+            <p className="mt-4 text-base text-muted-foreground">{t("subtitle")}</p>
+          </div>
+          <BlogSearchBar placeholder={t("searchPlaceholder")} />
         </div>
-        <BlogSearchBar placeholder={t("searchPlaceholder")} />
-      </div>
 
-      {/*
-        A manually-placed Suspense boundary, scoped to this page's own tree —
-        NOT a loading.tsx file. This page never calls notFound()/redirect(),
-        so there's no risk here, but keeping the same pattern everywhere
-        avoids anyone "helpfully" adding a loading.tsx back later.
-      */}
-      <Suspense key={`${q ?? ""}-${page ?? ""}`} fallback={<BlogLandingSkeleton />}>
-        <BlogLandingContent q={q} page={page} />
-      </Suspense>
+        {/*
+          A manually-placed Suspense boundary, scoped to this page's own tree —
+          NOT a loading.tsx file. This page never calls notFound()/redirect(),
+          so there's no risk here, but keeping the same pattern everywhere
+          avoids anyone "helpfully" adding a loading.tsx back later.
+        */}
+        <Suspense key={`${q ?? ""}-${page ?? ""}`} fallback={<BlogLandingSkeleton />}>
+          <BlogLandingContent q={q} page={page} />
+        </Suspense>
+      </div>
     </div>
   );
 }
@@ -125,14 +132,11 @@ async function BlogLandingContent({ q, page: pageParam }: { q?: string; page?: s
         ) : null}
 
         {latestPosts.length === 0 ? (
-          <div className="mt-4 flex flex-col gap-4">
-            <p className="text-sm text-muted-foreground">
-              {isSearching ? t("noResults") : t("empty")}
-            </p>
+          <BlogEmptyState message={isSearching ? t("noResults") : t("empty")}>
             {suggestions ? (
               <SearchSuggestions suggestions={suggestions} label={t("suggestionsIntro")} />
             ) : null}
-          </div>
+          </BlogEmptyState>
         ) : (
           <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {latestPosts.map((post) => (
@@ -166,9 +170,8 @@ async function BlogLandingContent({ q, page: pageParam }: { q?: string; page?: s
         </div>
       ) : null}
 
-      <div className="mt-16">
-        <NewsletterSection />
-      </div>
+      <BlogSectionDivider />
+      <NewsletterSection />
     </>
   );
 }

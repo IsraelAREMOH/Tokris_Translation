@@ -6,9 +6,8 @@ import { PostView } from "@/components/blog/post-view";
 import { Link } from "@/i18n/navigation";
 import { requireAdmin } from "@/lib/auth/guards";
 import { getAdjacentPosts, getPostForEdit, getRelatedPosts } from "@/lib/blog/posts/queries";
+import { SITE_URL } from "@/lib/site-url";
 import { UUID_PATTERN } from "@/lib/validation";
-
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
 
 // Deliberately its own route group (not nested under the (admin) group), so
 // it renders the article full-bleed — no ConsoleShell sidebar — matching
