@@ -27,9 +27,9 @@ export async function GET() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Tokris Global Services — Blog</title>
-  <link href="${siteUrl}/en/blog/atom.xml" rel="self" />
-  <link href="${siteUrl}/en/blog" />
-  <id>${siteUrl}/en/blog</id>
+  <link href="${siteUrl}/blog/atom.xml" rel="self" />
+  <link href="${siteUrl}/blog" />
+  <id>${siteUrl}/blog</id>
   <updated>${updated}</updated>${items}
 </feed>`;
 

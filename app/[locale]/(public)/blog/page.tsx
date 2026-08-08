@@ -51,7 +51,7 @@ export default async function BlogLandingPage({
       <BlogBrandBackdrop size="hero" />
 
       <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-        <JsonLd data={buildWebsiteSchema(locale)} />
+        <JsonLd data={buildWebsiteSchema()} />
 
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-2xl">

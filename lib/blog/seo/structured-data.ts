@@ -22,17 +22,17 @@ export function buildOrganizationSchema() {
 
 /** Includes a SearchAction pointing at the blog's search box, so Google can
  * offer a sitelinks search box for the domain. */
-export function buildWebsiteSchema(locale: string) {
+export function buildWebsiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: ORG_NAME,
-    url: `${SITE_URL}/${locale}`,
+    url: SITE_URL,
     potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: `${SITE_URL}/${locale}/blog?q={search_term_string}`,
+        urlTemplate: `${SITE_URL}/blog?q={search_term_string}`,
       },
       "query-input": "required name=search_term_string",
     },

@@ -23,14 +23,33 @@ const fraunces = Fraunces({
   display: "swap",
 });
 
+const DEFAULT_DESCRIPTION =
+  "Breaking language barriers, creating global opportunities, certified translation, sworn translation, interpretation, localization, transcription, and language training.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: "Tokris Global Services. Professional Language Solutions",
     template: "%s · Tokris Global Services",
   },
-  description:
-    "Breaking language barriers, creating global opportunities, certified translation, sworn translation, interpretation, localization, transcription, and language training.",
+  description: DEFAULT_DESCRIPTION,
+  // Page-level metadata (blog posts, category/tag archives) overrides these —
+  // this is only the fallback for pages that don't set their own openGraph/
+  // twitter block (About, Services, Contact, Quote, Home).
+  openGraph: {
+    type: "website",
+    siteName: "Tokris Global Services",
+    title: "Tokris Global Services. Professional Language Solutions",
+    description: DEFAULT_DESCRIPTION,
+    url: SITE_URL,
+    images: [{ url: "/api/og", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tokris Global Services. Professional Language Solutions",
+    description: DEFAULT_DESCRIPTION,
+    images: ["/api/og"],
+  },
 };
 
 export const viewport: Viewport = {

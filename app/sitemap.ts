@@ -3,18 +3,22 @@ import type { MetadataRoute } from "next";
 import { getCategories } from "@/lib/blog/categories/queries";
 import { getPublishedPosts } from "@/lib/blog/posts/queries";
 import { getTags } from "@/lib/blog/tags/queries";
-import { routing } from "@/i18n/routing";
 import { SITE_URL } from "@/lib/site-url";
 
 // Static, always-public routes — deliberately excludes /login, /register,
 // /portal, /admin (and everything under them) and the /admin/preview route.
+// "" maps to the homepage and must resolve to a trailing-slash "/" — every
+// other path is already unprefixed (site is English-only, no /en prefix —
+// see i18n/routing.ts's localePrefix: "never").
 const STATIC_PATHS = ["", "/services", "/about", "/contact", "/quote", "/blog"];
 
 function localizedEntries(path: string, lastModified?: Date) {
-  return routing.locales.map((locale) => ({
-    url: `${SITE_URL}/${locale}${path}`,
-    lastModified,
-  }));
+  return [
+    {
+      url: `${SITE_URL}${path || "/"}`,
+      lastModified,
+    },
+  ];
 }
 
 /**

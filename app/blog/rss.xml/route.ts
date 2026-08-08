@@ -29,8 +29,8 @@ export async function GET() {
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tokris Global Services — Blog</title>
-    <link>${siteUrl}/en/blog</link>
-    <atom:link href="${siteUrl}/en/blog/rss.xml" rel="self" type="application/rss+xml" />
+    <link>${siteUrl}/blog</link>
+    <atom:link href="${siteUrl}/blog/rss.xml" rel="self" type="application/rss+xml" />
     <description>Practical guidance on certified translation, interpretation, localization and going global.</description>
     <language>en</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>

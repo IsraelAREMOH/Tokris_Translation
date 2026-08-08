@@ -17,7 +17,10 @@ import { SocialLinks } from "@/components/social/social-links";
 import { Reveal } from "@/components/ui/reveal";
 import { getContactDetails, getWhatsAppHref, mapsHref, telHref } from "@/lib/contact/details";
 
-export const metadata: Metadata = { title: "Contact Us" };
+export const metadata: Metadata = {
+  title: "Contact Us",
+  alternates: { canonical: "/contact" },
+};
 
 export default async function ContactPage({
   params,

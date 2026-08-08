@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { getLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import { PostView } from "@/components/blog/post-view";
@@ -24,11 +23,7 @@ export default async function AdminPostPreviewPage({
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const [{ id }, { supabase }, locale] = await Promise.all([
-    params,
-    requireAdmin(),
-    getLocale(),
-  ]);
+  const [{ id }, { supabase }] = await Promise.all([params, requireAdmin()]);
   if (!UUID_PATTERN.test(id)) notFound();
 
   const post = await getPostForEdit(supabase, id);
@@ -54,7 +49,7 @@ export default async function AdminPostPreviewPage({
       </div>
       <PostView
         post={post}
-        articleUrl={`${SITE_URL}/${locale}/blog/${post.slug}`}
+        articleUrl={`${SITE_URL}/blog/${post.slug}`}
         relatedPosts={relatedPosts}
         previous={previous ? { href: `/blog/${previous.slug}`, title: previous.title } : null}
         next={next ? { href: `/blog/${next.slug}`, title: next.title } : null}

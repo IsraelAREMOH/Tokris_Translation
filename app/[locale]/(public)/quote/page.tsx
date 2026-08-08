@@ -6,7 +6,10 @@ import { QuoteForm } from "@/components/quote/quote-form";
 import { Link } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/server";
 
-export const metadata: Metadata = { title: "Request a Quote" };
+export const metadata: Metadata = {
+  title: "Request a Quote",
+  alternates: { canonical: "/quote" },
+};
 
 // Reuses the services hero's "translation" panel photo — a subdued backdrop
 // here rather than a sharp foreground image, since this page is single-column.

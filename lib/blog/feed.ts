@@ -21,7 +21,7 @@ export async function getFeedEntries(): Promise<FeedEntry[]> {
     .filter((post) => post.published_at)
     .map((post) => ({
       title: post.title,
-      url: `${SITE_URL}/en/blog/${post.slug}`,
+      url: `${SITE_URL}/blog/${post.slug}`,
       summary: post.excerpt ?? "",
       contentHtml: post.content_html,
       publishedAt: post.published_at as string,

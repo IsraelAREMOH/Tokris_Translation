@@ -6,17 +6,6 @@ import { routing } from "./i18n/routing";
 
 const handleI18nRouting = createMiddleware(routing);
 
-/** Splits "/en/portal/x" into the locale and the logical path "/portal/x". */
-function splitLocale(pathname: string): { locale: string; path: string } {
-  for (const locale of routing.locales) {
-    if (pathname === `/${locale}`) return { locale, path: "/" };
-    if (pathname.startsWith(`/${locale}/`)) {
-      return { locale, path: pathname.slice(locale.length + 1) };
-    }
-  }
-  return { locale: routing.defaultLocale, path: pathname };
-}
-
 /** Redirects while preserving any freshly refreshed session cookies. */
 function redirectWithCookies(source: NextResponse, url: URL) {
   const redirected = NextResponse.redirect(url);
@@ -27,6 +16,16 @@ function redirectWithCookies(source: NextResponse, url: URL) {
 }
 
 export default async function proxy(request: NextRequest) {
+  // Permanently redirect old locale-prefixed URLs (from before localePrefix
+  // was set to "never" in i18n/routing.ts, and still indexed by search
+  // engines) to their unprefixed equivalent — /en/about -> /about.
+  const { pathname } = request.nextUrl;
+  if (pathname === "/en" || pathname.startsWith("/en/")) {
+    const url = request.nextUrl.clone();
+    url.pathname = pathname === "/en" ? "/" : pathname.slice("/en".length);
+    return NextResponse.redirect(url, 308);
+  }
+
   const response = handleI18nRouting(request);
 
   const supabase = createServerClient(
@@ -52,7 +51,7 @@ export default async function proxy(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const { locale, path } = splitLocale(request.nextUrl.pathname);
+  const path = pathname;
   const isPortalArea = path === "/portal" || path.startsWith("/portal/");
   const isAdminArea = path === "/admin" || path.startsWith("/admin/");
   const isAuthPage = path === "/login" || path === "/register";
@@ -60,7 +59,7 @@ export default async function proxy(request: NextRequest) {
   // Unauthenticated users are locked out of both workspaces.
   if ((isPortalArea || isAdminArea) && !user) {
     const url = request.nextUrl.clone();
-    url.pathname = `/${locale}/login`;
+    url.pathname = "/login";
     url.search = "";
     if (path !== "/portal") url.searchParams.set("redirect", path);
     return redirectWithCookies(response, url);
@@ -77,7 +76,7 @@ export default async function proxy(request: NextRequest) {
     // Clients cannot enter the admin console.
     if (isAdminArea && !isAdmin) {
       const url = request.nextUrl.clone();
-      url.pathname = `/${locale}/portal`;
+      url.pathname = "/portal";
       url.search = "";
       return redirectWithCookies(response, url);
     }
@@ -86,7 +85,7 @@ export default async function proxy(request: NextRequest) {
     // targeting these routes are never intercepted mid-action).
     if (isAuthPage && request.method === "GET") {
       const url = request.nextUrl.clone();
-      url.pathname = `/${locale}${isAdmin ? "/admin" : "/portal"}`;
+      url.pathname = isAdmin ? "/admin" : "/portal";
       url.search = "";
       return redirectWithCookies(response, url);
     }
@@ -96,6 +95,16 @@ export default async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Skip Next.js internals, API routes and static assets
-  matcher: "/((?!api|_next|_vercel|.*\\..*).*)",
+  matcher: [
+    // Skip Next.js internals, API routes and static assets (files with a
+    // dot) — with two exceptions listed below: old locale-prefixed feed
+    // URLs also have a dot (rss.xml/atom.xml) and still need to hit this
+    // middleware so the /en redirect above can catch them. The unprefixed
+    // feed routes (app/blog/rss.xml, app/blog/atom.xml) live outside
+    // app/[locale] entirely, so they resolve as plain static routes and
+    // don't need the middleware to run at all.
+    "/((?!api|_next|_vercel|.*\\..*).*)",
+    "/en/blog/rss.xml",
+    "/en/blog/atom.xml",
+  ],
 };

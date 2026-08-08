@@ -9,6 +9,7 @@ import {
   ShieldCheck,
   Upload,
 } from "lucide-react";
+import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 
@@ -27,6 +28,10 @@ const HERO_IMAGE =
 // "Why Clients Choose Us" band — the wax-seal asset used for Apostille &
 // Legalization Support, doubling as a trust/credibility backdrop here.
 const WHY_CHOOSE_US_IMAGE = "/images/services/apostille-legalization.jpg";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 // One image per service, in sv1–sv7 order.
 const SERVICE_IMAGES = [

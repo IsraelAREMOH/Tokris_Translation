@@ -22,13 +22,13 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-  const { locale, slug } = await params;
+  const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) return {};
 
   const title = post.seo_title || post.title;
   const description = post.meta_description || post.excerpt || undefined;
-  const canonical = post.canonical_url || `${SITE_URL}/${locale}/blog/${post.slug}`;
+  const canonical = post.canonical_url || `${SITE_URL}/blog/${post.slug}`;
 
   // Falls back to a dynamically generated, on-brand card so a share never
   // shows a blank image just because no cover/OG image was set.
@@ -47,7 +47,7 @@ export async function generateMetadata({
       // i18n/routing.ts). Add a real per-locale entry here once another UI
       // locale exists and blog_posts.locale links genuine sibling
       // translations.
-      languages: { en: `${SITE_URL}/en/blog/${post.slug}` },
+      languages: { en: `${SITE_URL}/blog/${post.slug}` },
     },
     robots: { index: true, follow: true },
     openGraph: {
@@ -85,7 +85,7 @@ export default async function BlogArticlePage({
     notFound();
   }
 
-  const articleUrl = `${SITE_URL}/${locale}/blog/${post.slug}`;
+  const articleUrl = `${SITE_URL}/blog/${post.slug}`;
 
   const [relatedPosts, { previous, next }] = await Promise.all([
     getRelatedPosts(post.id, post.category_id),

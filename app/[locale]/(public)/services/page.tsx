@@ -23,7 +23,10 @@ import { ServicesHeroAccordion } from "@/components/public/services-hero-accordi
 import { Reveal } from "@/components/ui/reveal";
 import { Link } from "@/i18n/navigation";
 
-export const metadata: Metadata = { title: "Services" };
+export const metadata: Metadata = {
+  title: "Services",
+  alternates: { canonical: "/services" },
+};
 
 const TRANSLATION_IMAGE =
   "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1200&auto=format&fit=crop";
